@@ -1,0 +1,53 @@
+vsim work.alu
+# vsim work.alu 
+# Start time: 22:24:04 on Oct 03,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.alu(structural)#1
+add wave -position insertpoint  \
+sim:/alu/A \
+sim:/alu/B \
+sim:/alu/S \
+sim:/alu/Cin \
+sim:/alu/F \
+sim:/alu/Cout \
+sim:/alu/F_B \
+sim:/alu/F_C \
+sim:/alu/F_D \
+sim:/alu/Cout_C \
+sim:/alu/Cout_D
+force -freeze sim:/alu/A 8'h2B 0
+force -freeze sim:/alu/B 8'h4E 0
+force -freeze sim:/alu/S 4'b1100 0
+force -freeze sim:/alu/Cin 1 0
+run
+force -freeze sim:/alu/S 4'b1101 0
+run
+force -freeze sim:/alu/S 4'b1110 0
+run
+force -freeze sim:/alu/S 4'b1111 0
+run
+force -freeze sim:/alu/S 4'b0100 0
+run
+force -freeze sim:/alu/S 4'b0101 0
+run
+force -freeze sim:/alu/S 4'b0110 0
+run
+run
+force -freeze sim:/alu/S 4'b0111 0
+run
+force -freeze sim:/alu/S 4'b1000 0
+run
+force -freeze sim:/alu/S 4'b1001 0
+run
+force -freeze sim:/alu/S 4'b1010 0
+run
+force -freeze sim:/alu/Cin 0 0
+run
+force -freeze sim:/alu/Cin 1 0
+force -freeze sim:/alu/S 4'b1011 0
+run
+
+

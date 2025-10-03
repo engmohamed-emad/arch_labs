@@ -1,0 +1,216 @@
+m255
+K4
+z2
+Z0 !s12c _opt
+Z1 !s99 nomlopt
+R0
+R1
+!s11e vcom 2024.3 2024.09, Sep 10 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+d/home/omda/Downloads/arch/lab2
+T_opt
+!s110 1759519444
+VVmVDaeh8eb:A0;O::^`^g3
+04 3 10 work alu structural 1
+=1-000ae431a4f1-68e022d4-a5595-5c46
+R1
+!s12f OEM100
+!s12b OEM100
+!s124 OEM10U4 
+!s135 nogc
+o-quiet -auto_acc_if_foreign -work work
+tCvgOpt 0
+n@_opt
+OL;O;2024.3;79
+Ealu
+w1759500337
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 3
+Z4 d/home/omda/Downloads/arch/lab1
+Z5 8/home/omda/Downloads/arch/lab1/integration.vhd
+Z6 F/home/omda/Downloads/arch/lab1/integration.vhd
+l0
+L4 1
+Vfh9]Y;YOGR_e4HzHDfZ=c1
+!s100 FBA`SB@1R9A=TRQ:ejacc2
+Z7 OL;C;2024.3;79
+32
+!s110 1759500351
+!i10b 1
+!s108 1759500351.000000
+Z8 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|/home/omda/Downloads/arch/lab1/integration.vhd|
+Z9 !s107 /home/omda/Downloads/arch/lab1/integration.vhd|
+!i113 0
+Z10 o-work work -2002 -explicit
+Z11 tExplicit 1 CvgOpt 0
+Astructural
+Z12 w1759500821
+R2
+R3
+DEx4 work 3 alu 0 22 fh9]Y;YOGR_e4HzHDfZ=c1
+!i122 4
+l44
+L13 82
+V4Ga:lgbdjbCS85Fa@WE5^1
+!s100 XPd]D]5B_0`IMkM8C@f]K3
+R7
+32
+Z13 !s110 1759500826
+!i10b 1
+Z14 !s108 1759500826.000000
+R8
+R9
+!i113 0
+R10
+R11
+Eintegration
+R12
+R2
+R3
+!i122 4
+R4
+R5
+R6
+l0
+L4 1
+VEB8N9NDhCoj6UN0FA]mLE2
+!s100 9fcA_D:8TXo54W1<0o4iZ1
+R7
+32
+R13
+!i10b 1
+R14
+R8
+R9
+!i113 0
+R10
+R11
+Epartb
+Z15 w1759506135
+R2
+R3
+!i122 6
+R4
+Z16 8/home/omda/Downloads/arch/lab1/partB.vhd
+Z17 F/home/omda/Downloads/arch/lab1/partB.vhd
+l0
+L5 1
+V>Sf1CG5glkTc48O6VW8@c2
+!s100 e^:l@FHa[W;O>G2QSG:mm1
+R7
+32
+Z18 !s110 1759508609
+!i10b 1
+Z19 !s108 1759508609.000000
+Z20 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|/home/omda/Downloads/arch/lab1/partB.vhd|
+Z21 !s107 /home/omda/Downloads/arch/lab1/partB.vhd|
+!i113 0
+R10
+R11
+Abehavioral
+R2
+R3
+DEx4 work 5 partb 0 22 >Sf1CG5glkTc48O6VW8@c2
+!i122 6
+l14
+L13 19
+VUaCIKEaC;IA6EU`@ZXTch0
+!s100 W:4SAOI1_7Q>J932QANVP3
+R7
+32
+R18
+!i10b 1
+R19
+R20
+R21
+!i113 0
+R10
+R11
+Epartc
+Z22 w1759506103
+R2
+R3
+!i122 7
+R4
+Z23 8/home/omda/Downloads/arch/lab1/partC.vhd
+Z24 F/home/omda/Downloads/arch/lab1/partC.vhd
+l0
+L4 1
+VoYU67AZ>F8YzjKiCn=?n90
+!s100 K^9e25YWL]7GcNF48REnL1
+R7
+32
+Z25 !s110 1759508612
+!i10b 1
+Z26 !s108 1759508612.000000
+Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|/home/omda/Downloads/arch/lab1/partC.vhd|
+Z28 !s107 /home/omda/Downloads/arch/lab1/partC.vhd|
+!i113 0
+R10
+R11
+Abehavioral
+R2
+R3
+DEx4 work 5 partc 0 22 oYU67AZ>F8YzjKiCn=?n90
+!i122 7
+l14
+L13 25
+VX^NWacN[YkXAbcD4cLLdE2
+!s100 fY=nlG1ZJO>D=43Rn]4lL0
+R7
+32
+R25
+!i10b 1
+R26
+R27
+R28
+!i113 0
+R10
+R11
+Epartd
+Z29 w1759510958
+R2
+R3
+!i122 9
+R4
+Z30 8/home/omda/Downloads/arch/lab1/partD.vhd
+Z31 F/home/omda/Downloads/arch/lab1/partD.vhd
+l0
+L5 1
+VQJPEMBaVeh7U_z[HRk4YZ3
+!s100 YhOg4642?NG`f=WQQDF]m1
+R7
+32
+Z32 !s110 1759510962
+!i10b 1
+Z33 !s108 1759510962.000000
+Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|/home/omda/Downloads/arch/lab1/partD.vhd|
+Z35 !s107 /home/omda/Downloads/arch/lab1/partD.vhd|
+!i113 0
+R10
+R11
+Abehavioral
+R2
+R3
+DEx4 work 5 partd 0 22 QJPEMBaVeh7U_z[HRk4YZ3
+!i122 9
+l15
+L14 26
+V`>4JEBkB6RRF1JjA7YE162
+!s100 UQJ]NFEgf1YK6MDMoT><d3
+R7
+32
+R32
+!i10b 1
+R33
+R34
+R35
+!i113 0
+R10
+R11
