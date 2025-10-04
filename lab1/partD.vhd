@@ -1,39 +1,41 @@
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
-entity partD is
-    Port ( A : in STD_LOGIC_VECTOR (7 downto 0);
-           Cin : in STD_LOGIC;
-           S0 : in STD_LOGIC;
-           S1 : in STD_LOGIC;
-           F : out STD_LOGIC_VECTOR (7 downto 0);
-           Cout : out STD_LOGIC);
-end partD;
+ENTITY partD IS
+    GENERIC (n : INTEGER := 8);
+    PORT (
+        A : IN STD_LOGIC_VECTOR (n - 1 DOWNTO 0);
+        Cin : IN STD_LOGIC;
+        S0 : IN STD_LOGIC;
+        S1 : IN STD_LOGIC;
+        F : OUT STD_LOGIC_VECTOR (n - 1 DOWNTO 0);
+        Cout : OUT STD_LOGIC);
+END partD;
 
-architecture Behavioral of partD is
-begin
-    process(A, Cin, S0, S1)
-    begin
-        Cout <= '0';  -- Default value
-        
-        if S1 = '0' then
-            if S0 = '0' then          -- S=1100: Logic shift left A
-                F <= A(6 downto 0) & '0';
-                Cout <= A(7);
-            else                      -- S=1101: Rotate left A 
-                F <= A(6 downto 0) & A(7);
-                Cout <= A(7);
-                
-            end if;
-        else
-            if S0 = '0' then          -- S=1110: Rotate left A with a carry
-                F <= A(6 downto 0) & Cin;
-                Cout <= A(7);
-            else                      -- S=1111: F = 00000000
-                F <= (others => '0');
+ARCHITECTURE Behavioral OF partD IS
+BEGIN
+    PROCESS (A, Cin, S0, S1)
+    BEGIN
+        Cout <= '0'; -- Default value
+
+        IF S1 = '0' THEN
+            IF S0 = '0' THEN -- S=1100: Logic shift left A
+                F <= A(n - 2 DOWNTO 0) & '0';
+                Cout <= A(n - 1);
+            ELSE -- S=1101: Rotate left A 
+                F <= A(n - 2 DOWNTO 0) & A(n - 1);
+                Cout <= A(n - 1);
+
+            END IF;
+        ELSE
+            IF S0 = '0' THEN -- S=1110: Rotate left A with a carry
+                F <= A(n - 2 DOWNTO 0) & Cin;
+                Cout <= A(n - 1);
+            ELSE -- S=1111: F = 00000000
+                F <= (OTHERS => '0');
                 Cout <= '0';
-            end if;
-        end if;
-    end process;
-end Behavioral;
+            END IF;
+        END IF;
+    END PROCESS;
+END Behavioral;

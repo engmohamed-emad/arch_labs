@@ -1,31 +1,33 @@
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
-entity partB is
-    Port ( A : in STD_LOGIC_VECTOR (7 downto 0);
-           B : in STD_LOGIC_VECTOR (7 downto 0);
-           S0 : in STD_LOGIC;
-           S1 : in STD_LOGIC;
-           F : out STD_LOGIC_VECTOR (7 downto 0));
-end partB;
+ENTITY partB IS
+    GENERIC (n : INTEGER := 8);
+    PORT (
+        A : IN STD_LOGIC_VECTOR (n - 1 DOWNTO 0);
+        B : IN STD_LOGIC_VECTOR (n - 1 DOWNTO 0);
+        S0 : IN STD_LOGIC;
+        S1 : IN STD_LOGIC;
+        F : OUT STD_LOGIC_VECTOR (n - 1 DOWNTO 0));
+END partB;
 
-architecture Behavioral of partB is
-begin
-    process(A, B, S0, S1)
-    begin
-        if S1 = '0' then
-            if S0 = '0' then
-                F <= A and B;          -- S=0100: F = A and B
-            else
-                F <= A or B;           -- S=0101: F = A or B
-            end if;
-        else
-            if S0 = '0' then
-                F <= A nor B;          -- S=0110: F = A nor B
-            else
-                F <= not A;            -- S=0111: F = not A
-            end if;
-        end if;
-    end process;
-end Behavioral;
+ARCHITECTURE Behavioral OF partB IS
+BEGIN
+    PROCESS (A, B, S0, S1)
+    BEGIN
+        IF S1 = '0' THEN
+            IF S0 = '0' THEN
+                F <= A AND B; -- S=0100: F = A and B
+            ELSE
+                F <= A OR B; -- S=0101: F = A or B
+            END IF;
+        ELSE
+            IF S0 = '0' THEN
+                F <= A NOR B; -- S=0110: F = A nor B
+            ELSE
+                F <= NOT A; -- S=0111: F = not A
+            END IF;
+        END IF;
+    END PROCESS;
+END Behavioral;

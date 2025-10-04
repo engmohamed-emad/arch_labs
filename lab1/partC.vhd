@@ -1,37 +1,39 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
-entity partC is
-    Port ( A : in STD_LOGIC_VECTOR (7 downto 0);
-           Cin : in STD_LOGIC;
-           S0 : in STD_LOGIC;
-           S1 : in STD_LOGIC;
-           F : out STD_LOGIC_VECTOR (7 downto 0);
-           Cout : out STD_LOGIC);
-end partC;
+ENTITY partC IS
+    GENERIC (n : INTEGER := 8);
+    PORT (
+        A : IN STD_LOGIC_VECTOR (n - 1 DOWNTO 0);
+        Cin : IN STD_LOGIC;
+        S0 : IN STD_LOGIC;
+        S1 : IN STD_LOGIC;
+        F : OUT STD_LOGIC_VECTOR (n - 1 DOWNTO 0);
+        Cout : OUT STD_LOGIC);
+END partC;
 
-architecture Behavioral of partC is
-begin
-    process(A, Cin, S0, S1)
-    begin
-        Cout <= '0';  -- Default value
-        
-        if S1 = '0' then
-            if S0 = '0' then        -- S=1000: Logic shift right A
-                F <= '0' & A(7 downto 1);
+ARCHITECTURE Behavioral OF partC IS
+BEGIN
+    PROCESS (A, Cin, S0, S1)
+    BEGIN
+        Cout <= '0'; -- Default value
+
+        IF S1 = '0' THEN
+            IF S0 = '0' THEN -- S=1000: Logic shift right A
+                F <= '0' & A(n - 1 DOWNTO 1);
                 Cout <= A(0);
-            else                    -- S=1001: Rotate right A
-                F <= A(0) & A(7 downto 1);
+            ELSE -- S=1001: Rotate right A
+                F <= A(0) & A(n - 1 DOWNTO 1);
                 Cout <= A(0);
-            end if;
-        else
-            if S0 = '0' then        -- S=1010: Rotate right A with Carry
-                F <= Cin & A(7 downto 1);
+            END IF;
+        ELSE
+            IF S0 = '0' THEN -- S=1010: Rotate right A with Carry
+                F <= Cin & A(n - 1 DOWNTO 1);
                 Cout <= A(0);
-            else                    -- S=1011: Arithmetic shift right A
-                F <= A(7) & A(7 downto 1);
+            ELSE -- S=1011: Arithmetic shift right A
+                F <= A(n - 1) & A(n - 1 DOWNTO 1);
                 Cout <= A(0);
-            end if;
-        end if;
-    end process;
-end Behavioral;
+            END IF;
+        END IF;
+    END PROCESS;
+END Behavioral;

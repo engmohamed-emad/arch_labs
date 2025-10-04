@@ -1,39 +1,37 @@
-/home/omda/Downloads/arch/lab1/partD.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/omda/Downloads/arch/lab1/partD.vhd
-Questa Intel Starter FPGA Edition-64 vcom 2024.3 Compiler 2024.09 Sep 10 2024
+D:/assignments/vhdl/arch_labs/lab1/partC.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab1/partC.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity partC
+-- Compiling architecture Behavioral of partC
+
+} {} {}} D:/assignments/vhdl/arch_labs/lab1/partD.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab1/partD.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity partD
 -- Compiling architecture Behavioral of partD
 
-} {} {}} /home/omda/Downloads/arch/lab1/integration.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/omda/Downloads/arch/lab1/integration.vhd
-Questa Intel Starter FPGA Edition-64 vcom 2024.3 Compiler 2024.09 Sep 10 2024
+} {} {}} D:/assignments/vhdl/arch_labs/lab1/partA.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab1/partA.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity INTEGRATION
--- Compiling architecture Structural of ALU
--- Loading entity ALU
+-- Compiling entity adder
+-- Compiling architecture adderbehave of adder
+-- Compiling entity genFullAdder
+-- Compiling architecture genFullAdderbehave of genFullAdder
+-- Compiling entity partA
+-- Compiling architecture portAbehave of partA
 
-} {} {}} /home/omda/Downloads/arch/lab1/partA.vhd {0 {vcom -work work -2002 -explicit -vopt -stats=none /home/omda/Downloads/arch/lab1/partA.vhd
-Questa Intel Starter FPGA Edition-64 vcom 2024.3 Compiler 2024.09 Sep 10 2024
--- Loading package STANDARD
-** Error (suppressible): /home/omda/Downloads/arch/lab1/partA.vhd(2): (vcom-1491) Empty source files.
-
-} {} {}} /home/omda/Downloads/arch/lab1/partB.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/omda/Downloads/arch/lab1/partB.vhd
-Questa Intel Starter FPGA Edition-64 vcom 2024.3 Compiler 2024.09 Sep 10 2024
+} {} {}} D:/assignments/vhdl/arch_labs/lab1/partB.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab1/partB.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity partB
 -- Compiling architecture Behavioral of partB
-
-} {} {}} /home/omda/Downloads/arch/lab1/partC.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/omda/Downloads/arch/lab1/partC.vhd
-Questa Intel Starter FPGA Edition-64 vcom 2024.3 Compiler 2024.09 Sep 10 2024
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity partC
--- Compiling architecture Behavioral of partC
 
 } {} {}}

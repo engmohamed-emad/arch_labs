@@ -1,18 +1,18 @@
 m255
 K4
 z2
+!s11e MIXED_VERSIONS
 Z0 !s12c _opt
 Z1 !s99 nomlopt
 R0
 R1
-!s11e vcom 2024.3 2024.09, Sep 10 2024
 13
 !s112 1.1
 !i10d 8192
 !i10e 25
 !i10f 100
 cModel Technology
-d/home/omda/Downloads/arch/lab2
+Z2 d/home/omda/Downloads/arch/lab2
 T_opt
 !s110 1759519444
 VVmVDaeh8eb:A0;O::^`^g3
@@ -27,190 +27,319 @@ o-quiet -auto_acc_if_foreign -work work
 tCvgOpt 0
 n@_opt
 OL;O;2024.3;79
-Ealu
-w1759500337
-Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 3
-Z4 d/home/omda/Downloads/arch/lab1
-Z5 8/home/omda/Downloads/arch/lab1/integration.vhd
-Z6 F/home/omda/Downloads/arch/lab1/integration.vhd
+R2
+Eadder
+Z3 w1759584891
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 61
+Z6 dD:/assignments/vhdl/arch_labs/lab1
+Z7 8partA.vhd
+Z8 FpartA.vhd
 l0
-L4 1
-Vfh9]Y;YOGR_e4HzHDfZ=c1
-!s100 FBA`SB@1R9A=TRQ:ejacc2
-Z7 OL;C;2024.3;79
+L6 1
+VN;Unln0K6FV@ebePRM<010
+!s100 Go_mbkXoUGBIPin7VL_Q81
+Z9 OV;C;2020.1;71
 32
-!s110 1759500351
+Z10 !s110 1759587956
 !i10b 1
-!s108 1759500351.000000
-Z8 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|/home/omda/Downloads/arch/lab1/integration.vhd|
-Z9 !s107 /home/omda/Downloads/arch/lab1/integration.vhd|
-!i113 0
-Z10 o-work work -2002 -explicit
-Z11 tExplicit 1 CvgOpt 0
-Astructural
-Z12 w1759500821
-R2
-R3
-DEx4 work 3 alu 0 22 fh9]Y;YOGR_e4HzHDfZ=c1
-!i122 4
-l44
-L13 82
-V4Ga:lgbdjbCS85Fa@WE5^1
-!s100 XPd]D]5B_0`IMkM8C@f]K3
-R7
-32
-Z13 !s110 1759500826
-!i10b 1
-Z14 !s108 1759500826.000000
-R8
-R9
-!i113 0
-R10
-R11
-Eintegration
-R12
-R2
-R3
-!i122 4
+Z11 !s108 1759587956.000000
+Z12 !s90 -reportprogress|300|partA.vhd|
+Z13 !s107 partA.vhd|
+!i113 1
+Z14 tExplicit 1 CvgOpt 0
+Aadderbehave
 R4
 R5
-R6
-l0
-L4 1
-VEB8N9NDhCoj6UN0FA]mLE2
-!s100 9fcA_D:8TXo54W1<0o4iZ1
-R7
-32
-R13
-!i10b 1
-R14
-R8
-R9
-!i113 0
-R10
-R11
-Epartb
-Z15 w1759506135
-R2
-R3
-!i122 6
-R4
-Z16 8/home/omda/Downloads/arch/lab1/partB.vhd
-Z17 F/home/omda/Downloads/arch/lab1/partB.vhd
-l0
-L5 1
-V>Sf1CG5glkTc48O6VW8@c2
-!s100 e^:l@FHa[W;O>G2QSG:mm1
-R7
-32
-Z18 !s110 1759508609
-!i10b 1
-Z19 !s108 1759508609.000000
-Z20 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|/home/omda/Downloads/arch/lab1/partB.vhd|
-Z21 !s107 /home/omda/Downloads/arch/lab1/partB.vhd|
-!i113 0
-R10
-R11
-Abehavioral
-R2
-R3
-DEx4 work 5 partb 0 22 >Sf1CG5glkTc48O6VW8@c2
-!i122 6
-l14
-L13 19
-VUaCIKEaC;IA6EU`@ZXTch0
-!s100 W:4SAOI1_7Q>J932QANVP3
-R7
-32
-R18
-!i10b 1
-R19
-R20
-R21
-!i113 0
-R10
-R11
-Epartc
-Z22 w1759506103
-R2
-R3
-!i122 7
-R4
-Z23 8/home/omda/Downloads/arch/lab1/partC.vhd
-Z24 F/home/omda/Downloads/arch/lab1/partC.vhd
-l0
-L4 1
-VoYU67AZ>F8YzjKiCn=?n90
-!s100 K^9e25YWL]7GcNF48REnL1
-R7
-32
-Z25 !s110 1759508612
-!i10b 1
-Z26 !s108 1759508612.000000
-Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|/home/omda/Downloads/arch/lab1/partC.vhd|
-Z28 !s107 /home/omda/Downloads/arch/lab1/partC.vhd|
-!i113 0
-R10
-R11
-Abehavioral
-R2
-R3
-DEx4 work 5 partc 0 22 oYU67AZ>F8YzjKiCn=?n90
-!i122 7
-l14
-L13 25
-VX^NWacN[YkXAbcD4cLLdE2
-!s100 fY=nlG1ZJO>D=43Rn]4lL0
-R7
-32
-R25
-!i10b 1
-R26
-R27
-R28
-!i113 0
-R10
-R11
-Epartd
-Z29 w1759510958
-R2
-R3
-!i122 9
-R4
-Z30 8/home/omda/Downloads/arch/lab1/partD.vhd
-Z31 F/home/omda/Downloads/arch/lab1/partD.vhd
-l0
-L5 1
-VQJPEMBaVeh7U_z[HRk4YZ3
-!s100 YhOg4642?NG`f=WQQDF]m1
-R7
-32
-Z32 !s110 1759510962
-!i10b 1
-Z33 !s108 1759510962.000000
-Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|/home/omda/Downloads/arch/lab1/partD.vhd|
-Z35 !s107 /home/omda/Downloads/arch/lab1/partD.vhd|
-!i113 0
-R10
-R11
-Abehavioral
-R2
-R3
-DEx4 work 5 partd 0 22 QJPEMBaVeh7U_z[HRk4YZ3
-!i122 9
+Z15 DEx4 work 5 adder 0 22 N;Unln0K6FV@ebePRM<010
+!i122 61
 l15
-L14 26
-V`>4JEBkB6RRF1JjA7YE162
-!s100 UQJ]NFEgf1YK6MDMoT><d3
-R7
+Z16 L14 5
+Z17 V7iik=VeAh]JF:fM;nnc4<2
+Z18 !s100 k=Fh;N_]hil7;;NNVS0A[2
+R9
 32
-R32
+R10
 !i10b 1
+R11
+R12
+R13
+!i113 1
+R14
+Ealu
+Z19 w1759587362
+R4
+R5
+!i122 58
+R6
+Z20 8integration.vhd
+Z21 Fintegration.vhd
+l0
+L4 1
+VFS=_MMNh2CUK085ZJ]=>X0
+!s100 D?D:NIIa4ARSAUCiz?YF00
+R9
+32
+Z22 !s110 1759587377
+!i10b 1
+Z23 !s108 1759587377.000000
+Z24 !s90 -reportprogress|300|integration.vhd|partA.vhd|partB.vhd|partC.vhd|partD.vhd|
+Z25 !s107 partD.vhd|partC.vhd|partB.vhd|partA.vhd|integration.vhd|
+!i113 1
+R14
+Astructural
+R4
+R5
+DEx4 work 3 alu 0 22 FS=_MMNh2CUK085ZJ]=>X0
+!i122 58
+l62
+Z26 L15 114
+VUI@T9276>3e^ZbTK70Q<22
+!s100 9VWQezF^OY^3R`VZPm8_^1
+R9
+32
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 1
+R14
+Egenfulladder
+R3
+R4
+R5
+!i122 61
+R6
+R7
+R8
+l0
+L24 1
+VKL>kn`:TNI0k?HgSCM^R23
+!s100 8bQT>dmZ@JX2mj]QaPWEi0
+R9
+32
+R10
+!i10b 1
+R11
+R12
+R13
+!i113 1
+R14
+Agenfulladderbehave
+R4
+R5
+Z27 DEx4 work 12 genfulladder 0 22 KL>kn`:TNI0k?HgSCM^R23
+!i122 61
+l43
+Z28 L33 17
+Z29 VaGTmeCn0?7GO@B60lVRmd3
+Z30 !s100 QzZKEi8oYEOM]>4A70C;b1
+R9
+32
+R10
+!i10b 1
+R11
+R12
+R13
+!i113 1
+R14
+Eintegration
+w1759585797
+R4
+R5
+!i122 53
+R6
+Z31 8D:/assignments/vhdl/arch_labs/lab1/integration.vhd
+Z32 FD:/assignments/vhdl/arch_labs/lab1/integration.vhd
+l0
+L4 1
+V>9_Ek]23GCaKj]o4MP7KJ0
+!s100 DCieU=31BFz01cU86f=@83
+R9
+32
+!s110 1759585810
+!i10b 1
+!s108 1759585810.000000
+Z33 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/assignments/vhdl/arch_labs/lab1/integration.vhd|
+Z34 !s107 D:/assignments/vhdl/arch_labs/lab1/integration.vhd|
+!i113 1
+Z35 o-work work -2002 -explicit
+R14
+Astructural
+R4
+R5
+DEx4 work 11 integration 0 22 >9_Ek]23GCaKj]o4MP7KJ0
+!i122 52
+l62
+R26
+VIhWWDheNNIY4WiDDYT3nS0
+!s100 K8O<Z`8jj6Mb]QlmERCo92
+R9
+32
+!s110 1759585494
+!i10b 1
+!s108 1759585494.000000
 R33
 R34
+!i113 1
 R35
-!i113 0
+R14
+w1759585488
+Eparta
+R3
+R4
+R5
+!i122 61
+R6
+R7
+R8
+l0
+L55 1
+VUTPPV5M4EWneL>fg1`jJ]0
+!s100 CjH=b:Z`jS9T[GDefCdM>1
+R9
+32
 R10
+!i10b 1
 R11
+R12
+R13
+!i113 1
+R14
+Aportabehave
+R4
+R5
+Z36 DEx4 work 5 parta 0 22 UTPPV5M4EWneL>fg1`jJ]0
+!i122 61
+l80
+Z37 L67 26
+Z38 V=;l^9mPT4g08eO4nd=T0T2
+Z39 !s100 5oTYX32VK5T58h:Kkf`:[3
+R9
+32
+R10
+!i10b 1
+R11
+R12
+R13
+!i113 1
+R14
+Epartb
+Z40 w1759584894
+R4
+R5
+!i122 58
+R6
+Z41 8partB.vhd
+Z42 FpartB.vhd
+l0
+L5 1
+VQd9K?Y6TAo_LDa]Um@BXK3
+!s100 Tc1nY3AT[bMDVa7fY@l841
+R9
+32
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 1
+R14
+Abehavioral
+R4
+R5
+DEx4 work 5 partb 0 22 Qd9K?Y6TAo_LDa]Um@BXK3
+!i122 58
+l16
+L15 19
+V[X@6:IY?He0d<OaAa<ICl0
+!s100 _H@4all5]Scb8MH=]FzK<3
+R9
+32
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 1
+R14
+Epartc
+Z43 w1759584899
+R4
+R5
+!i122 58
+R6
+Z44 8partC.vhd
+Z45 FpartC.vhd
+l0
+L4 1
+VFQ>m3aFRdWSW:jW]N8MG]3
+!s100 NNQJc[bcF[PAQ_SAFK`l00
+R9
+32
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 1
+R14
+Abehavioral
+R4
+R5
+DEx4 work 5 partc 0 22 FQ>m3aFRdWSW:jW]N8MG]3
+!i122 58
+l16
+L15 25
+VF^3K7@Zj:UMA2A<Y>I<om1
+!s100 bfaAidXU>gDCcN9LeK2P_3
+R9
+32
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 1
+R14
+Epartd
+Z46 w1759584902
+R4
+R5
+!i122 58
+R6
+Z47 8partD.vhd
+Z48 FpartD.vhd
+l0
+L5 1
+VABhNaC=`1@`oWVXoX_PGj3
+!s100 eaMI>IXh?ES799DdeB[@a3
+R9
+32
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 1
+R14
+Abehavioral
+R4
+R5
+DEx4 work 5 partd 0 22 ABhNaC=`1@`oWVXoX_PGj3
+!i122 58
+l17
+L16 26
+V50kakR[RK?9oi<@VdAdZL2
+!s100 19l`_PjjAkbf8hlR;ZmA13
+R9
+32
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 1
+R14
