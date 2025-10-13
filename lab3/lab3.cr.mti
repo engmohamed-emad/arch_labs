@@ -1,0 +1,17 @@
+/home/omda/Downloads/arch/lab3/register8bit.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/omda/Downloads/arch/lab3/register8bit.vhd
+Questa Intel Starter FPGA Edition-64 vcom 2024.3 Compiler 2024.09 Sep 10 2024
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity reg8
+-- Compiling architecture struct of reg8
+
+} {} {}} /home/omda/Downloads/arch/lab3/DFF.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/omda/Downloads/arch/lab3/DFF.vhd
+Questa Intel Starter FPGA Edition-64 vcom 2024.3 Compiler 2024.09 Sep 10 2024
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity my_DFF
+-- Compiling architecture a_my_DFF of my_DFF
+
+} {} {}}
