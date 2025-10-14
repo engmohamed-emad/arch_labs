@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity regfile_dff is
+entity register_file is
     port (
         clk         : in  std_logic;
         reset       : in  std_logic;
@@ -14,9 +14,9 @@ entity regfile_dff is
         read_data0  : out std_logic_vector(7 downto 0);
         read_data1  : out std_logic_vector(7 downto 0)
     );
-end entity regfile_dff;
+end entity register_file;
 
-architecture struct of regfile_dff is
+architecture struct of register_file is
     component reg8 is
         port (
             clk   : in  std_logic;

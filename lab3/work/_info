@@ -1,7 +1,7 @@
 m255
 K4
 z2
-!s11e vcom 2024.3 2024.09, Sep 10 2024
+!s11e MIXED_VERSIONS
 13
 !s112 1.1
 !i10d 8192
@@ -10,36 +10,35 @@ z2
 cModel Technology
 d/home/omda/Downloads/vlsi/questlab2
 Emy_dff
-Z0 w1760383709
+Z0 w1760419550
 Z1 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z2 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 0
-Z3 d/home/omda/Downloads/arch/lab3
-Z4 8/home/omda/Downloads/arch/lab3/DFF.vhd
-Z5 F/home/omda/Downloads/arch/lab3/DFF.vhd
+!i122 42
+Z3 dD:/assignments/vhdl/arch_labs/lab3
+Z4 8DFF.vhd
+Z5 FDFF.vhd
 l0
 L4 1
-V5EOVhf8=aU@IniShNN[zL1
+VKg8@Ni:J^CAVS>XXcK[Z]3
 !s100 Z<_OKf[eNN8FC>HB5l5W00
-Z6 OL;C;2024.3;79
+Z6 OV;C;2020.1;71
 32
-Z7 !s110 1760383715
+Z7 !s110 1760433116
 !i10b 1
-Z8 !s108 1760383715.000000
-Z9 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|/home/omda/Downloads/arch/lab3/DFF.vhd|
-Z10 !s107 /home/omda/Downloads/arch/lab3/DFF.vhd|
-!i113 0
-Z11 o-work work -2002 -explicit
-Z12 tExplicit 1 CvgOpt 0
+Z8 !s108 1760433116.000000
+Z9 !s90 -reportprogress|300|DFF.vhd|register8bit.vhd|register_memory.vhd|registerfile.vhd|
+Z10 !s107 registerfile.vhd|register_memory.vhd|register8bit.vhd|DFF.vhd|
+!i113 1
+Z11 tExplicit 1 CvgOpt 0
 Aa_my_dff
 R1
 R2
-DEx4 work 6 my_dff 0 22 5EOVhf8=aU@IniShNN[zL1
-!i122 0
+Z12 DEx4 work 6 my_dff 0 22 Kg8@Ni:J^CAVS>XXcK[Z]3
+!i122 42
 l9
-L8 11
-VRWd:6EA6PNKK@@N>YkBQ^2
-!s100 HgnYBNDRle`5m5Tc=d[Rk1
+Z13 L8 11
+Z14 V>g@lWYgR]U:;l[bbRBR=W1
+Z15 !s100 HgnYBNDRle`5m5Tc=d[Rk1
 R6
 32
 R7
@@ -47,90 +46,126 @@ R7
 R8
 R9
 R10
-!i113 0
+!i113 1
 R11
-R12
 Ereg8
-Z13 w1760385440
+R0
 R1
 R2
-!i122 11
+!i122 42
 R3
-Z14 8/home/omda/Downloads/arch/lab3/register8bit.vhd
-Z15 F/home/omda/Downloads/arch/lab3/register8bit.vhd
+Z16 8register8bit.vhd
+Z17 Fregister8bit.vhd
 l0
 L4 1
-VPWUUJNiG[XW2@DU9CMRjA0
+VP^o]V]>6IdJO[kJWYAdRd2
 !s100 3_RMWP49ZfnYPOhfIJMiF3
 R6
 32
-Z16 !s110 1760385446
+R7
 !i10b 1
-Z17 !s108 1760385446.000000
-Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|/home/omda/Downloads/arch/lab3/register8bit.vhd|
-Z19 !s107 /home/omda/Downloads/arch/lab3/register8bit.vhd|
-!i113 0
+R8
+R9
+R10
+!i113 1
 R11
-R12
 Astruct
 R1
 R2
-DEx4 work 4 reg8 0 22 PWUUJNiG[XW2@DU9CMRjA0
-!i122 11
+Z18 DEx4 work 4 reg8 0 22 P^o]V]>6IdJO[kJWYAdRd2
+!i122 42
 l26
-L14 25
-VN;0[=UI5;JGZ;I[H6G0[L3
-!s100 VY7[YD64L2Yk6A@FKBM]E0
+Z19 L14 25
+Z20 VD1J7R@PbJ70f[igjce3gj1
+Z21 !s100 VY7[YD64L2Yk6A@FKBM]E0
 R6
 32
-R16
+R7
 !i10b 1
-R17
-R18
-R19
-!i113 0
+R8
+R9
+R10
+!i113 1
 R11
-R12
 Eregfile_dff
-Z20 w1760385594
-Z21 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+R0
+Z22 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 R1
 R2
-!i122 12
+!i122 42
 R3
-Z22 8/home/omda/Downloads/arch/lab3/registerfile.vhd
-Z23 F/home/omda/Downloads/arch/lab3/registerfile.vhd
+Z23 8registerfile.vhd
+Z24 Fregisterfile.vhd
 l0
 L5 1
-VUF8[]?@YScRJfT==Y04g;3
+Vi3MoT`L431Mgz9OTd4^R:3
 !s100 GaQI[5VRb_DR5U]z@:8X`2
 R6
 32
-Z24 !s110 1760385599
+R7
 !i10b 1
-Z25 !s108 1760385599.000000
-Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|/home/omda/Downloads/arch/lab3/registerfile.vhd|
-Z27 !s107 /home/omda/Downloads/arch/lab3/registerfile.vhd|
-!i113 0
+R8
+R9
+R10
+!i113 1
 R11
-R12
 Astruct
-R21
+R22
 R1
 R2
-Z28 DEx4 work 11 regfile_dff 0 22 UF8[]?@YScRJfT==Y04g;3
-!i122 12
+Z25 DEx4 work 11 regfile_dff 0 22 i3MoT`L431Mgz9OTd4^R:3
+!i122 42
 l33
-L19 60
-V:hUYbJV^nbdKh66CYH^RP2
-!s100 RNEB?:=EheL6NDGJG58zH0
+Z26 L19 60
+Z27 V94=FVoh1]<eZhQAWU`Ahi3
+Z28 !s100 RNEB?:=EheL6NDGJG58zH0
 R6
 32
-R24
+R7
 !i10b 1
-R25
-R26
-R27
-!i113 0
+R8
+R9
+R10
+!i113 1
 R11
-R12
+Eregistermemo
+Z29 w1760433110
+R22
+R1
+R2
+!i122 42
+R3
+Z30 8register_memory.vhd
+Z31 Fregister_memory.vhd
+l0
+L5 1
+V7ce7OUSXlV?7>mXg`X^Pf0
+!s100 JS<G:<kVEgQ2@Q9A`l4RP0
+R6
+32
+R7
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
+Astruct
+R22
+R1
+R2
+Z32 DEx4 work 12 registermemo 0 22 7ce7OUSXlV?7>mXg`X^Pf0
+!i122 42
+l23
+Z33 L20 35
+VVY]PMH[TGHHA8Q^jREH5U3
+!s100 ^Bn];04hKaZLGRWBlSQ5m3
+R6
+32
+R7
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
