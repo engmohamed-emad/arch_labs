@@ -1,0 +1,93 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+-----------------------------------------------------------------------------
+-- full adder component
+-----------------------------------------------------------------------------
+ENTITY adder IS
+    PORT (
+        a, b : IN STD_LOGIC;
+        cin : IN STD_LOGIC;
+        out1 : OUT STD_LOGIC;
+        cout : OUT STD_LOGIC
+    );
+END ENTITY adder;
+ARCHITECTURE adderbehave OF adder IS
+BEGIN
+    out1 <= (a XOR b) XOR cin;
+    cout <= (a AND b) OR (cin AND (a XOR b));
+END ARCHITECTURE;
+-----------------------------------------------------------------------------
+-- generic full adder for n bits
+-----------------------------------------------------------------------------
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ENTITY genFullAdder IS
+    GENERIC (n : INTEGER := 8);
+    PORT (
+        a, b : IN STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
+        cin : IN STD_LOGIC;
+        f : OUT STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
+        cout : OUT STD_LOGIC
+    );
+END ENTITY;
+ARCHITECTURE genFullAdderbehave OF genFullAdder IS
+    COMPONENT adder IS
+        PORT (
+            a, b : IN STD_LOGIC;
+            cin : IN STD_LOGIC;
+            out1 : OUT STD_LOGIC;
+            cout : OUT STD_LOGIC
+        );
+    END COMPONENT;
+    SIGNAL temp : STD_LOGIC_VECTOR(n DOWNTO 0);
+BEGIN
+    temp(0) <= cin;
+    loop1 : FOR i IN 0 TO n - 1 GENERATE
+        FA : adder PORT MAP(a(i), b(i), temp(i), f(i), temp(i + 1));
+    END GENERATE;
+    cout <= temp(n);
+END ARCHITECTURE;
+-----------------------------------------------------------------------------
+-- generic partA entity
+-----------------------------------------------------------------------------
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ENTITY partA IS
+    GENERIC (
+        n : INTEGER := 8
+    );
+    PORT (
+        a, b : IN STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
+        sel : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+        cin : IN STD_LOGIC;
+        cout : OUT STD_LOGIC;
+        f : OUT STD_LOGIC_VECTOR(n - 1 DOWNTO 0)
+    );
+END ENTITY;
+ARCHITECTURE portAbehave OF partA IS
+    COMPONENT genFullAdder IS
+        GENERIC (n : INTEGER := 8);
+        PORT (
+            a, b : IN STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
+            cin : IN STD_LOGIC;
+            f : OUT STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
+            cout : OUT STD_LOGIC
+        );
+    END COMPONENT;
+    SIGNAL a_in, b_in : STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
+    SIGNAL out_temp : STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
+    SIGNAL cout_temp : STD_LOGIC;
+BEGIN
+    b_in <= (OTHERS => '0') WHEN sel = "0000" ELSE
+        b WHEN sel = "0001" ELSE
+        NOT b WHEN sel = "0010" ELSE
+        (OTHERS => '1');
+    a_in <= (OTHERS => '0') WHEN (sel = "0011" AND cin = '1')
+        ELSE
+        a;
+    FA : genFullAdder GENERIC MAP(n) PORT MAP(a => a_in, b => b_in, cin => cin, f => out_temp, cout => cout_temp);
+    f <= out_temp;
+    cout <= '0' WHEN sel = "0011" AND cin = '1' ELSE
+        cout_temp;
+END ARCHITECTURE;
+-----------------------------------------------------------------------------

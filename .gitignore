@@ -1,0 +1,16 @@
+# Ignore everything by default
+
+# Allow specific file types
+!*.vhd
+!*.pdf
+!*.txt
+!*.do
+!*.mpf
+
+# Ignore Quartus and simulation folders
+work/
+simulation/
+db/
+incremental_db/
+output_files/
+*.pdf
