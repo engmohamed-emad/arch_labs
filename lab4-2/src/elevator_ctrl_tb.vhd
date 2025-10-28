@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -25,7 +16,7 @@ architecture tb of elevator_ctrl_tb is
 begin
   -- DUT
   dut: entity work.elevator_ctrl
-    generic map (N_FLOORS => N, CLOCK_FREQ => 50000000)
+    generic map (N_FLOORS => N, CLOCK_FREQ => 100)
     port map (
       clk => clk, reset => reset, floor_buttons => floor_buttons,
       current_floor_leds => current_floor_leds, seg_out => seg_out,
