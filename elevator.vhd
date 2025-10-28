@@ -4,14 +4,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity elevator is
-    generic (
-        N_FLOORS : integer := 10
-    );
     port (
         clk         : in  std_logic;
         reset       : in  std_logic;
-        req         : in  std_logic_vector(N_FLOORS-1 downto 0);
-        floor       : out unsigned(3 downto 0);
+        req         : in  std_logic_vector(9 downto 0);
+        floor       : out std_logic_vector(3 downto 0);
         door_open   : out std_logic;
         moving_up   : out std_logic;
         moving_down : out std_logic
@@ -24,14 +21,14 @@ architecture rtl of elevator is
     type state_type is (ST_IDLE, ST_MOVING_UP, ST_MOVING_DOWN, ST_DOOR_OPEN);
     signal state, next_state : state_type;
 
-    signal current_floor : unsigned(3 downto 0) := (others => '0');
-    signal target_floor  : unsigned(3 downto 0) := (others => '0');
-    signal timer         : unsigned(1 downto 0) := (others => '0'); -- counts seconds (0..3)
+    signal current_floor : std_logic_vector(3 downto 0) := (others => '0');
+    signal target_floor  : std_logic_vector(3 downto 0) := (others => '0');
+    signal timer         : std_logic_vector(1 downto 0) := (others => '0'); -- counts seconds (0..3)
     signal clk_1s_en     : std_logic := '0'; -- 1 sec enable
 
-    signal req_latched   : std_logic_vector(N_FLOORS-1 downto 0) := (others => '0');
-    signal next_req_up   : unsigned(3 downto 0);
-    signal next_req_down : unsigned(3 downto 0);
+    signal req_latched   : std_logic_vector(9 downto 0) := (others => '0');
+    signal next_req_up   : std_logic_vector(3 downto 0);
+    signal next_req_down : std_logic_vector(3 downto 0);
     signal req_pending   : std_logic;
 
 begin
@@ -71,9 +68,9 @@ begin
         next_req_down <= current_floor;
         req_pending   <= '0';
         -- Up direction
-        for i in to_integer(current_floor)+1 to N_FLOORS-1 loop
+        for i in to_integer(current_floor)+1 to 9 loop
             if req_latched(i) = '1' then
-                next_req_up <= to_unsigned(i, 4);
+                next_req_up <= std_logic_vector(to_unsigned(i, 4));
                 req_pending <= '1';
                 exit;
             end if;
@@ -81,7 +78,7 @@ begin
         -- Down direction
         for i in to_integer(current_floor)-1 downto 0 loop
             if req_latched(i) = '1' then
-                next_req_down <= to_unsigned(i, 4);
+                next_req_down <= std_logic_vector(to_unsigned(i, 4));
                 req_pending <= '1';
                 exit;
             end if;

@@ -20,10 +20,18 @@ architecture rtl of top_elevator is
 
     signal req         : std_logic_vector(9 downto 0);
     signal enaElevator : std_logic;
-
+    COMPONENT abutton_detectordder IS
+        PORT (
+            clk : IN STD_LOGIC;
+            reset_btns : IN STD_LOGIC;
+            buttonsIn : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+            enaElevator : IN STD_LOGIC;
+            buttonsOut : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
+        );
+    END COMPONENT;
 begin
 
-    btn_det : entity work.button_detector
+    btn_det : button_detector
         port map (
             clk         => clk,
             reset_btns  => reset_btns,
@@ -32,7 +40,7 @@ begin
             buttonsOut  => req
         );
 
-    elev_ctrl : entity work.elevator
+    elev_ctrl : elevator
         generic map (
             N_FLOORS => 10
         )
