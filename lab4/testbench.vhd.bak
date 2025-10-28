@@ -8,7 +8,7 @@ END ENTITY;
 
 ARCHITECTURE tb OF elevator_ctrl_tb IS
     CONSTANT NUM_FLOORS : INTEGER := 10;
-    CONSTANT CLK_PERIOD : TIME := 10 ms; -- 50 MHz
+    CONSTANT CLK_PERIOD : TIME := 20 ns; -- 50 MHz
     
     SIGNAL clk : STD_LOGIC := '0';
     SIGNAL reset : STD_LOGIC := '1';
@@ -56,7 +56,7 @@ BEGIN
         );
 
     -- Clock generation (50 MHz)
-    clk_gen(clk, 100);
+    clk_gen(clk, 50000000);
 
     -- Test process
     stimulus: PROCESS

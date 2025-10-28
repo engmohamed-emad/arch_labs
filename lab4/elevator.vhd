@@ -35,13 +35,13 @@ BEGIN
 
     -- 1 sec clock enable generator (assuming 50MHz clk)
     PROCESS (clk, reset)
-        VARIABLE cnt : INTEGER RANGE 0 TO 49999999 := 0;
+        VARIABLE cnt : INTEGER RANGE 0 TO 100 := 0;
     BEGIN
         IF reset = '1' THEN
             cnt := 0;
             clk_1s_en <= '0';
         ELSIF rising_edge(clk) THEN
-            IF cnt = 49999999 THEN
+            IF cnt = 100 THEN
                 clk_1s_en <= '1';
                 cnt := 0;
             ELSE
