@@ -1,172 +1,324 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
-ENTITY elevator IS PORT (
-    clk, reset, submitRequest : IN STD_LOGIC;
-    request : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-    isDoorOpen, isMoving : OUT STD_LOGIC;
-    curFloor : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-    curFloor7seg : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
-);
+
+
+-- Modified Elevator Entity
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+
+ENTITY elevator IS
+    PORT (
+        clk           : IN  STD_LOGIC;
+        reset         : IN  STD_LOGIC;
+        submitRequest : IN  STD_LOGIC;
+        request       : IN  STD_LOGIC_VECTOR(3 DOWNTO 0);
+        isDoorOpen    : OUT STD_LOGIC;
+        isMoving      : OUT STD_LOGIC;
+        curFloor      : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+        curFloor7seg  : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+    );
 END ENTITY elevator;
 
 ARCHITECTURE behavior OF elevator IS
+
+    -- Component Declaration
+    COMPONENT seven_segment_decoder IS
+        PORT (
+            floor_number : IN  STD_LOGIC_VECTOR(3 DOWNTO 0);
+            segments     : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+        );
+    END COMPONENT;
+
+    -- FSM states
     TYPE state_type IS (ST_IDLE, ST_MOVING_UP, ST_MOVING_DOWN, ST_DOOR_OPEN);
-    TYPE requestArray IS ARRAY(0 TO 9) OF STD_LOGIC_VECTOR(3 DOWNTO 0);
-    SIGNAL requests : requestArray := (OTHERS => "1111");
-    SIGNAL curState : state_type := ST_IDLE;
-    SIGNAL nextState : state_type := ST_IDLE;
-    SIGNAL targetFloor : STD_LOGIC_VECTOR(3 DOWNTO 0) := "1111";
-    SIGNAL sec1_en : STD_LOGIC;
-    SIGNAL hasRequest : STD_LOGIC;
-    SIGNAL second_count : STD_LOGIC;
-    SIGNAL cur_floor : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0000";
-BEGIN
-    seconds_generator : PROCESS (clk, reset)
-        VARIABLE cnt : INTEGER RANGE 0 TO 10 := 0;
-        VARIABLE lastState : state_type := ST_IDLE;
+    SIGNAL cur_state  : state_type := ST_IDLE;
+    SIGNAL next_state : state_type := ST_IDLE;
+
+    -- requests bitmap (bit 9 = floor 9 ... bit 0 = floor 0)
+    SIGNAL requests : STD_LOGIC_VECTOR(9 DOWNTO 0) := (OTHERS => '0');
+
+    -- target floor (4 bits), "1111" = no target
+    SIGNAL targetFloor      : STD_LOGIC_VECTOR(3 DOWNTO 0) := "1111";
+    SIGNAL next_targetFloor : STD_LOGIC_VECTOR(3 DOWNTO 0) := "1111";
+
+    -- current floor
+    SIGNAL floor_reg : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0000";
+
+    -- tick generator (produces sec_tick)
+    CONSTANT SEC_TICKS : INTEGER := 10;
+    SIGNAL sec_cnt   : INTEGER RANGE 0 TO SEC_TICKS := 0;
+    SIGNAL sec_tick  : STD_LOGIC := '0';
+
+    -- door timer
+    CONSTANT DOOR_TICKS : INTEGER := 2;
+    SIGNAL door_cnt    : INTEGER RANGE 0 TO DOOR_TICKS := 0;
+
+    -- helper signals
+    SIGNAL hasRequest : STD_LOGIC := '0';
+    SIGNAL moving_dir : STD_LOGIC := '1'; -- '1'=up, '0'=down
+    SIGNAL next_moving_dir : STD_LOGIC := '1';
+
+    -- find nearest request above current floor
+    FUNCTION find_next_up(cur : INTEGER; reqs : STD_LOGIC_VECTOR) RETURN INTEGER IS
     BEGIN
-        IF reset = '1' THEN
-            cnt := 0;
-            sec1_en <= '0';
-            lastState := ST_IDLE;
-        ELSIF rising_edge(clk) THEN
-            IF nextState /= lastState THEN
-                cnt := 0;
-                sec1_en <= '0';
-                lastState := nextState;
-            ELSE
-                IF cnt = 10 THEN
-                    sec1_en <= '1';
-                    cnt := 0;
-                ELSE
-                    sec1_en <= '0';
-                    cnt := cnt + 1;
-                END IF;
-            END IF;
-        END IF;
-    END PROCESS seconds_generator;
-    store_requests : PROCESS (request)
-        VARIABLE idx : INTEGER;
-    BEGIN
-        idx := to_integer(unsigned(request));
-        IF submitRequest = '1' THEN
-            requests(idx) <= request;
-        END IF;
-    END PROCESS store_requests;
-    check_requests : PROCESS (requests)
-        VARIABLE found : BOOLEAN := false;
-    BEGIN
-        found := false;
         FOR i IN 0 TO 9 LOOP
-            IF requests(i) /= "1111" THEN
-                found := true;
+            IF i > cur AND reqs(i) = '1' THEN
+                RETURN i;
             END IF;
         END LOOP;
-        IF found = true THEN
-            hasRequest <= '1';
-        ELSE
-            hasRequest <= '0';
-        END IF;
-    END PROCESS check_requests;
-    state_manager : PROCESS (targetFloor, cur_floor, reset)
-        VARIABLE pastState : state_type;
+        RETURN -1;
+    END FUNCTION;
+
+    -- find nearest request below current floor
+    FUNCTION find_next_down(cur : INTEGER; reqs : STD_LOGIC_VECTOR) RETURN INTEGER IS
+    BEGIN
+        FOR i IN 9 DOWNTO 0 LOOP
+            IF i < cur AND reqs(i) = '1' THEN
+                RETURN i;
+            END IF;
+        END LOOP;
+        RETURN -1;
+    END FUNCTION;
+
+BEGIN
+
+    -------------------------------------------------------------------------
+    -- Seven Segment Decoder Component Instantiation
+    -------------------------------------------------------------------------
+    seven_seg_inst : seven_segment_decoder
+        PORT MAP (
+            floor_number => floor_reg,
+            segments     => curFloor7seg
+        );
+
+    -------------------------------------------------------------------------
+    -- Synchronous process: tick generator, request storage, floor updates
+    -------------------------------------------------------------------------
+    sync_proc : PROCESS(clk, reset)
     BEGIN
         IF reset = '1' THEN
-            nextState <= ST_IDLE;
-        END IF;
-        IF targetFloor /= "1111" THEN
-            IF cur_floor = targetFloor THEN
-                nextState <= ST_DOOR_OPEN;
-            ELSIF cur_floor < targetFloor THEN
-                nextState <= ST_MOVING_UP;
-            ELSIF cur_floor > targetFloor THEN
-                nextState <= ST_MOVING_DOWN;
+            sec_cnt     <= 0;
+            sec_tick    <= '0';
+            requests    <= (OTHERS => '0');
+            floor_reg   <= "0000";
+            cur_state   <= ST_IDLE;
+            targetFloor <= "1111";
+            door_cnt    <= 0;
+            hasRequest  <= '0';
+            moving_dir  <= '1';
+        ELSIF rising_edge(clk) THEN
+            -- tick generator
+            IF sec_cnt = SEC_TICKS - 1 THEN
+                sec_cnt  <= 0;
+                sec_tick <= '1';
             ELSE
-                nextState <= ST_IDLE;
+                sec_cnt  <= sec_cnt + 1;
+                sec_tick <= '0';
+            END IF;
+
+            -- store incoming request
+            IF submitRequest = '1' THEN
+                IF unsigned(request) <= 9 THEN
+                    requests(to_integer(unsigned(request))) <= '1';
+                END IF;
+            END IF;
+
+            -- movement and door timer on sec_tick
+            IF sec_tick = '1' THEN
+                CASE cur_state IS
+                    WHEN ST_MOVING_UP =>
+                        IF unsigned(floor_reg) < 9 THEN
+                            floor_reg <= STD_LOGIC_VECTOR(unsigned(floor_reg) + 1);
+                        END IF;
+                        -- check if reached target after movement
+                        IF STD_LOGIC_VECTOR(unsigned(floor_reg) + 1) = targetFloor THEN
+                            requests(to_integer(unsigned(targetFloor))) <= '0';
+                            door_cnt <= 0;
+                            cur_state <= ST_DOOR_OPEN;
+                        END IF;
+                        
+                    WHEN ST_MOVING_DOWN =>
+                        IF unsigned(floor_reg) > 0 THEN
+                            floor_reg <= STD_LOGIC_VECTOR(unsigned(floor_reg) - 1);
+                        END IF;
+                        -- check if reached target after movement
+                        IF STD_LOGIC_VECTOR(unsigned(floor_reg) - 1) = targetFloor THEN
+                            requests(to_integer(unsigned(targetFloor))) <= '0';
+                            door_cnt <= 0;
+                            cur_state <= ST_DOOR_OPEN;
+                        END IF;
+                        
+                    WHEN ST_DOOR_OPEN =>
+                        IF door_cnt < DOOR_TICKS THEN
+                            door_cnt <= door_cnt + 1;
+                        ELSE
+                            -- door timer finished, update state from combinational logic
+                            cur_state <= next_state;
+                            targetFloor <= next_targetFloor;
+                            moving_dir <= next_moving_dir;
+                        END IF;
+                        
+                    WHEN ST_IDLE =>
+                        -- update state from combinational logic
+                        cur_state <= next_state;
+                        targetFloor <= next_targetFloor;
+                        moving_dir <= next_moving_dir;
+                        
+                    WHEN OTHERS =>
+                        NULL;
+                END CASE;
+            ELSE
+                -- when not on tick, still update state for IDLE and non-door states
+                IF cur_state = ST_IDLE OR cur_state = ST_MOVING_UP OR cur_state = ST_MOVING_DOWN THEN
+                    IF cur_state /= ST_MOVING_UP OR floor_reg /= targetFloor THEN
+                        IF cur_state /= ST_MOVING_DOWN OR floor_reg /= targetFloor THEN
+                            cur_state <= next_state;
+                            targetFloor <= next_targetFloor;
+                            moving_dir <= next_moving_dir;
+                        END IF;
+                    END IF;
+                END IF;
+            END IF;
+
+            -- update hasRequest flag
+            IF requests /= "0000000000" THEN
+                hasRequest <= '1';
+            ELSE
+                hasRequest <= '0';
             END IF;
         END IF;
-    END PROCESS state_manager;
-    main_logic : PROCESS (clk)
-        VARIABLE cur_floor_idx : INTEGER;
-        VARIABLE isup : BOOLEAN;
-        VARIABLE isdown : BOOLEAN;
-        VARIABLE TIME : INTEGER;
+    END PROCESS sync_proc;
+
+    -------------------------------------------------------------------------
+    -- Combinational next-state and target selection
+    -------------------------------------------------------------------------
+    comb_next : PROCESS(cur_state, floor_reg, requests, hasRequest, door_cnt, moving_dir, targetFloor)
+        VARIABLE cur_idx : INTEGER;
+        VARIABLE up_idx  : INTEGER;
+        VARIABLE down_idx: INTEGER;
     BEGIN
-        IF rising_edge(clk) THEN
-            cur_floor_idx := to_integer(unsigned(cur_floor));
-            IF reset = '1' THEN
-                curState <= ST_IDLE;
-                cur_floor <= "0000";
-                targetFloor <= "1111";
-            ELSIF curState = ST_IDLE AND hasRequest = '1' THEN
-                FOR i IN 0 TO 9 LOOP
-                    IF requests(i) /= "1111" THEN
-                        targetFloor <= requests(i);
-                        EXIT;
-                    END IF;
-                END LOOP;
-                IF nextState = ST_MOVING_UP AND sec1_en = '1' THEN
-                    cur_floor <= STD_LOGIC_VECTOR(unsigned(cur_floor) + 1);
-                    curState <= nextState;
-                END IF;
-                IF nextState = ST_MOVING_DOWN AND sec1_en = '1' THEN
-                    cur_floor <= STD_LOGIC_VECTOR(unsigned(cur_floor) - 1);
-                    curState <= nextState;
-                END IF;
-            ELSIF curState = ST_MOVING_UP AND nextState = ST_DOOR_OPEN THEN
-                isup := false;
-                isdown := false;
-                FOR i IN cur_floor_idx + 1 to 9 LOOP
-                    IF requests(i) /= "1111" THEN
-                        targetFloor <= requests(i);
-                        isup := true;
-                        EXIT;
-                    END IF;
-                END LOOP;
-                IF NOT isup THEN
-                    FOR i IN  cur_floor_idx - 1 downto 0 LOOP
-                        IF requests(i) /= "1111" THEN
-                            targetFloor <= requests(i);
-                            isdown := true;
-                            EXIT;
+        -- defaults
+        next_state      <= cur_state;
+        next_targetFloor <= targetFloor;
+        next_moving_dir <= moving_dir;
+
+        cur_idx := to_integer(unsigned(floor_reg));
+        up_idx := -1;
+        down_idx := -1;
+
+        CASE cur_state IS
+            WHEN ST_IDLE =>
+                IF hasRequest = '1' THEN
+                    -- Find next up/down requests
+                    FOR i IN 0 TO 9 LOOP
+                        IF i > cur_idx AND requests(i) = '1' AND up_idx = -1 THEN
+                            up_idx := i;
                         END IF;
                     END LOOP;
-                END IF;
-                IF NOT isdown THEN
-                    targetFloor <= "1111";
-                END IF;
-                curState <= nextState;
-            ELSIF curState = ST_MOVING_DOWN AND nextState = ST_DOOR_OPEN THEN
-                isup := false;
-                isdown := false;
-               FOR i IN  cur_floor_idx - 1 DOWNTO 0 LOOP
-                    IF requests(i) /= "1111" THEN
-                        targetFloor <= requests(i);
-                        isdown := true;
-                        EXIT;
-                    END IF;
-                END LOOP;
-                IF NOT isdown THEN
-                    FOR i IN cur_floor_idx + 1 TO 9 LOOP
-                        IF requests(i) /= "1111" THEN
-                            targetFloor <= requests(i);
-                            isup := true;
-                            EXIT;
+                    
+                    FOR i IN 9 DOWNTO 0 LOOP
+                        IF i < cur_idx AND requests(i) = '1' AND down_idx = -1 THEN
+                            down_idx := i;
                         END IF;
                     END LOOP;
+                    
+                    -- Check current floor first
+                    IF requests(cur_idx) = '1' THEN
+                        next_state <= ST_DOOR_OPEN;
+                        next_targetFloor <= floor_reg;
+                    ELSIF up_idx /= -1 THEN
+                        next_state <= ST_MOVING_UP;
+                        next_targetFloor <= STD_LOGIC_VECTOR(to_unsigned(up_idx,4));
+                        next_moving_dir <= '1';
+                    ELSIF down_idx /= -1 THEN
+                        next_state <= ST_MOVING_DOWN;
+                        next_targetFloor <= STD_LOGIC_VECTOR(to_unsigned(down_idx,4));
+                        next_moving_dir <= '0';
+                    END IF;
                 END IF;
-                IF NOT isup THEN
-                    targetFloor <= "1111";
+
+            WHEN ST_MOVING_UP =>
+                -- Continue moving, target is already set
+                next_state <= ST_MOVING_UP;
+
+            WHEN ST_MOVING_DOWN =>
+                -- Continue moving, target is already set
+                next_state <= ST_MOVING_DOWN;
+
+            WHEN ST_DOOR_OPEN =>
+                IF door_cnt >= DOOR_TICKS THEN
+                    -- Door timer finished, decide next direction
+                    IF hasRequest = '1' THEN
+                        -- Find next up/down requests
+                        FOR i IN 0 TO 9 LOOP
+                            IF i > cur_idx AND requests(i) = '1' AND up_idx = -1 THEN
+                                up_idx := i;
+                            END IF;
+                        END LOOP;
+                        
+                        FOR i IN 9 DOWNTO 0 LOOP
+                            IF i < cur_idx AND requests(i) = '1' AND down_idx = -1 THEN
+                                down_idx := i;
+                            END IF;
+                        END LOOP;
+                        
+                        -- Continue in the same direction if possible
+                        IF moving_dir = '1' THEN
+                            -- Was going up, try to continue up first
+                            IF up_idx /= -1 THEN
+                                next_state <= ST_MOVING_UP;
+                                next_targetFloor <= STD_LOGIC_VECTOR(to_unsigned(up_idx,4));
+                                next_moving_dir <= '1';
+                            ELSIF down_idx /= -1 THEN
+                                -- No more up requests, go down
+                                next_state <= ST_MOVING_DOWN;
+                                next_targetFloor <= STD_LOGIC_VECTOR(to_unsigned(down_idx,4));
+                                next_moving_dir <= '0';
+                            ELSE
+                                -- No more requests
+                                next_state <= ST_IDLE;
+                                next_targetFloor <= "1111";
+                            END IF;
+                        ELSE
+                            -- Was going down, try to continue down first
+                            IF down_idx /= -1 THEN
+                                next_state <= ST_MOVING_DOWN;
+                                next_targetFloor <= STD_LOGIC_VECTOR(to_unsigned(down_idx,4));
+                                next_moving_dir <= '0';
+                            ELSIF up_idx /= -1 THEN
+                                -- No more down requests, go up
+                                next_state <= ST_MOVING_UP;
+                                next_targetFloor <= STD_LOGIC_VECTOR(to_unsigned(up_idx,4));
+                                next_moving_dir <= '1';
+                            ELSE
+                                -- No more requests
+                                next_state <= ST_IDLE;
+                                next_targetFloor <= "1111";
+                            END IF;
+                        END IF;
+                    ELSE
+                        -- No more requests
+                        next_state <= ST_IDLE;
+                        next_targetFloor <= "1111";
+                    END IF;
+                ELSE
+                    -- Door still open
+                    next_state <= ST_DOOR_OPEN;
                 END IF;
-                curState <= nextState;
-            ELSIF curState = ST_DOOR_OPEN THEN
-                IF sec1_en = '1' THEN
-                    requests(cur_floor_idx) <= "1111";
-                    curState <= nextState;
-                END IF;
-            END IF;
-        END IF;
-        curFloor <= cur_floor;
-    END PROCESS main_logic;
-END behavior;
+
+            WHEN OTHERS =>
+                next_state <= ST_IDLE;
+                next_targetFloor <= "1111";
+        END CASE;
+    END PROCESS comb_next;
+
+    -------------------------------------------------------------------------
+    -- Output assignments
+    -------------------------------------------------------------------------
+    curFloor    <= floor_reg;
+    isMoving    <= '1' WHEN (cur_state = ST_MOVING_UP OR cur_state = ST_MOVING_DOWN) ELSE '0';
+    isDoorOpen  <= '1' WHEN (cur_state = ST_DOOR_OPEN) ELSE '0';
+
+END ARCHITECTURE behavior;
