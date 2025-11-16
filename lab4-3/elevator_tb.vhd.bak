@@ -1,0 +1,102 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity tb_elevator is
+end tb_elevator;
+
+architecture behavior of tb_elevator is
+
+    -- DUT port signals
+    signal clk            : std_logic := '0';
+    signal reset          : std_logic := '0';
+    signal submitRequest  : std_logic := '0';
+    signal request        : std_logic_vector(3 downto 0) := (others => '0');
+    signal isDoorOpen     : std_logic;
+    signal isMoving       : std_logic;
+    signal curFloor       : std_logic_vector(3 downto 0);
+    signal is_1s          : std_logic;
+    signal curFloor7seg   : std_logic_vector(6 downto 0);
+
+    constant clk_period : time := 10 ns;
+
+begin
+
+    --------------------------------------------------------------------
+    -- Instantiate the DUT (Device Under Test)
+    --------------------------------------------------------------------
+    uut: entity work.elevator
+        port map (
+            clk           => clk,
+            reset         => reset,
+            submitRequest => submitRequest,
+            request       => request,
+            isDoorOpen    => isDoorOpen,
+            isMoving      => isMoving,
+            curFloor      => curFloor,
+            is_1s         => is_1s,
+            curFloor7seg  => curFloor7seg
+        );
+
+    --------------------------------------------------------------------
+    -- Clock Generation
+    --------------------------------------------------------------------
+    clk_process : process
+    begin
+        clk <= '0';
+        wait for clk_period/2;
+        clk <= '1';
+        wait for clk_period/2;
+    end process;
+
+    --------------------------------------------------------------------
+    -- Test Stimulus
+    --------------------------------------------------------------------
+    stim_proc : process
+    begin
+        -- Apply RESET
+        reset <= '1';
+        wait for 50 ns;
+        reset <= '0';
+        wait for 50 ns;
+
+        ----------------------------------------------------------------
+        -- Send multiple requests one by one
+        ----------------------------------------------------------------
+
+        -- Request floor 3
+        request <= "0011";
+        submitRequest <= '1';
+        wait for 20 ns;
+        submitRequest <= '0';
+        wait for 100 ns;
+
+        -- Request floor 7
+        request <= "0111";
+        submitRequest <= '1';
+        wait for 20 ns;
+        submitRequest <= '0';
+        wait for 100 ns;
+
+        -- Request floor 0
+        request <= "0000";
+        submitRequest <= '1';
+        wait for 20 ns;
+        submitRequest <= '0';
+        wait for 100 ns;
+
+        -- Request floor 9
+        request <= "1001";
+        submitRequest <= '1';
+        wait for 20 ns;
+        submitRequest <= '0';
+        wait for 100 ns;
+
+        ----------------------------------------------------------------
+        -- End Simulation
+        ----------------------------------------------------------------
+        wait for 200 ns;
+        assert false report "Simulation completed." severity failure;
+    end process;
+
+end behavior;

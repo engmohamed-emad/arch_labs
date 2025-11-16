@@ -1,4 +1,3 @@
--- filepath: d:\assignments\vhdl\arch_labs\lab4\system_design.vhd
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
