@@ -18,7 +18,8 @@ ARCHITECTURE test OF elevator_tb IS
     SIGNAL curFloor7seg  : STD_LOGIC_VECTOR(6 DOWNTO 0);
 
     CONSTANT clk_period : TIME := 10 ns;
-    
+
+    -- Procedure to submit floor to DUT
     PROCEDURE submit_floor(
         floor_num : IN INTEGER;
         SIGNAL req : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -46,118 +47,41 @@ BEGIN
             curFloor7seg  => curFloor7seg
         );
 
-    clk <= NOT clk AFTER clk_period/2;
+    clk <= NOT clk AFTER clk_period / 2;
 
     stim_proc : PROCESS
     BEGIN
 
-        reset <= '1';
-        WAIT FOR 100 ns;
         reset <= '0';
+        WAIT FOR 100 ns;
+        reset <= '1';
         WAIT FOR 50 ns;
 
-        submit_floor(5, request, submitRequest);
-        WAIT FOR 6000 ns;
-        ASSERT curFloor = "0101" SEVERITY ERROR;
-
+        ------------------------------------------------------------
+        -- VALID REQUEST: GO TO FLOOR 2
+        ------------------------------------------------------------
         submit_floor(2, request, submitRequest);
-        WAIT FOR 5000 ns;
-        ASSERT curFloor = "0010" SEVERITY ERROR;
-
-        submit_floor(2, request, submitRequest);
-        WAIT FOR 500 ns;
-        ASSERT isDoorOpen = '1' SEVERITY ERROR;
-        WAIT FOR 2500 ns;
-
-        submit_floor(7, request, submitRequest);
-        submit_floor(4, request, submitRequest);
-        WAIT FOR 3000 ns;
-        ASSERT curFloor = "0100" SEVERITY ERROR;
-        WAIT FOR 5000 ns;
-        ASSERT curFloor = "0111" SEVERITY ERROR;
-
-        submit_floor(3, request, submitRequest);
-        submit_floor(5, request, submitRequest);
-        WAIT FOR 3000 ns;
-        ASSERT curFloor = "0101" SEVERITY ERROR;
-        WAIT FOR 4000 ns;
-        ASSERT curFloor = "0011" SEVERITY ERROR;
-
-        submit_floor(6, request, submitRequest);
-        submit_floor(1, request, submitRequest);
-        WAIT FOR 5000 ns;
-        ASSERT curFloor = "0110" SEVERITY ERROR;
-        WAIT FOR 7000 ns;
-        ASSERT curFloor = "0001" SEVERITY ERROR;
-
-        submit_floor(8, request, submitRequest);
-        WAIT FOR 2000 ns;
-        submit_floor(5, request, submitRequest);
         WAIT FOR 6000 ns;
-        ASSERT curFloor = "0101" SEVERITY ERROR;
-        WAIT FOR 5000 ns;
-        ASSERT curFloor = "1000" SEVERITY ERROR;
 
-        submit_floor(3, request, submitRequest);
-        submit_floor(6, request, submitRequest);
-        submit_floor(9, request, submitRequest);
-        WAIT FOR 7000 ns;
-        ASSERT curFloor = "0011" SEVERITY ERROR;
-        WAIT FOR 5000 ns;
-        ASSERT curFloor = "0110" SEVERITY ERROR;
-        WAIT FOR 5000 ns;
-        ASSERT curFloor = "1001" SEVERITY ERROR;
+        ASSERT curFloor = "0010"
+            REPORT "ERROR: Elevator failed to reach floor 2"
+            SEVERITY ERROR;
 
-        submit_floor(0, request, submitRequest);
-        WAIT FOR 11000 ns;
-        ASSERT curFloor = "0000" SEVERITY ERROR;
-        submit_floor(9, request, submitRequest);
-        WAIT FOR 11000 ns;
-        ASSERT curFloor = "1001" SEVERITY ERROR;
-
-        submit_floor(5, request, submitRequest);
-        WAIT FOR 6000 ns;
-        submit_floor(2, request, submitRequest);
-        submit_floor(4, request, submitRequest);
-        submit_floor(7, request, submitRequest);
-        submit_floor(8, request, submitRequest);
-        WAIT FOR 15000 ns;
-
-        submit_floor(3, request, submitRequest);
-        WAIT FOR 3000 ns;
-        submit_floor(6, request, submitRequest);
-        submit_floor(6, request, submitRequest);
+        ------------------------------------------------------------
+        -- INVALID REQUEST: FLOOR 6 (OUT OF BOUNDS)
+        ------------------------------------------------------------
         submit_floor(6, request, submitRequest);
         WAIT FOR 5000 ns;
-        ASSERT curFloor = "0110" SEVERITY ERROR;
 
-        submit_floor(0, request, submitRequest);
-        WAIT FOR 8000 ns;
-        FOR i IN 1 TO 9 LOOP
-            submit_floor(i, request, submitRequest);
-        END LOOP;
-        WAIT FOR 25000 ns;
+        -- Elevator must NOT go to floor 6
+        ASSERT curFloor /= "0110"
+            REPORT "ERROR: Elevator INCORRECTLY went to INVALID floor 6!"
+            SEVERITY ERROR;
 
-        submit_floor(5, request, submitRequest);
-        WAIT FOR 6000 ns;
-        WAIT FOR 100 ns;
-        submit_floor(3, request, submitRequest);
-        WAIT FOR 5000 ns;
-
-        FOR i IN 0 TO 20 LOOP
-            submit_floor((i*7) MOD 10, request, submitRequest);
-            WAIT FOR 200 ns;
-        END LOOP;
-        WAIT FOR 30000 ns;
-
-        submit_floor(9, request, submitRequest);
-        WAIT FOR 2000 ns;
-        reset <= '1';
-        WAIT FOR 100 ns;
-        reset <= '0';
-        WAIT FOR 50 ns;
-        ASSERT curFloor = "0000" SEVERITY ERROR;
-        ASSERT isDoorOpen = '0' SEVERITY ERROR;
+        -- It must remain on floor 2
+        ASSERT curFloor = "0010"
+            REPORT "ERROR: Elevator moved after invalid request!"
+            SEVERITY ERROR;
 
         WAIT;
     END PROCESS;

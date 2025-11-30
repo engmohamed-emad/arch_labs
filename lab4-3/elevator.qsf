@@ -38,7 +38,7 @@
 
 
 set_global_assignment -name FAMILY "Cyclone V"
-set_global_assignment -name DEVICE 5CGXFC7C7F23C8
+set_global_assignment -name DEVICE 5CSEMA5F31C6
 set_global_assignment -name TOP_LEVEL_ENTITY elevator
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:09:38  NOVEMBER 16, 2025"
@@ -52,4 +52,20 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_AB12 -to request[0]
+set_location_assignment PIN_AC12 -to request[1]
+set_location_assignment PIN_AF9 -to request[2]
+set_location_assignment PIN_AF10 -to request[3]
+set_location_assignment PIN_AA15 -to reset
+set_location_assignment PIN_AA14 -to submitRequest
+set_location_assignment PIN_V16 -to isDoorOpen
+set_location_assignment PIN_W16 -to isMoving
+set_location_assignment PIN_AE26 -to curFloor7seg[0]
+set_location_assignment PIN_AE27 -to curFloor7seg[1]
+set_location_assignment PIN_AE28 -to curFloor7seg[2]
+set_location_assignment PIN_AG27 -to curFloor7seg[3]
+set_location_assignment PIN_AF28 -to curFloor7seg[4]
+set_location_assignment PIN_AG28 -to curFloor7seg[5]
+set_location_assignment PIN_AH28 -to curFloor7seg[6]
+set_location_assignment PIN_AF14 -to clk
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

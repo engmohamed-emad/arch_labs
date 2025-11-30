@@ -14,13 +14,22 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity my_DFF
 -- Compiling architecture a_my_DFF of my_DFF
 
-} {} {}} D:/assignments/vhdl/arch_labs/lab3/register_memory.vhd {0 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab3/register_memory.vhd
+} {} {}} D:/assignments/vhdl/arch_labs/lab3/register_memory.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab3/register_memory.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package NUMERIC_STD
--- Compiling entity registerMemo
-** Error: D:/assignments/vhdl/arch_labs/lab3/register_memory.vhd(7): near "PORT": syntax error
+-- Compiling entity register_memory
+-- Compiling architecture struct of register_memory
 
-} {8.0 9.0} {}}
+} {} {}} D:/assignments/vhdl/arch_labs/lab3/registerfile.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab3/registerfile.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity register_file
+-- Compiling architecture struct of register_file
+
+} {} {}}
