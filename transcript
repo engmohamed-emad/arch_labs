@@ -1,0 +1,815 @@
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 linux_x86_64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading project lab3
+# 0 compiles, 4 failed with no errors.
+# reading /home/omda/altera_lite/25.1std/questa_fse/linux_x86_64/../modelsim.ini
+# Loading project mem
+# Compile of DFF.vhd was successful.
+# Compile of register8bit.vhd was successful.
+# Compile of register_memory.vhd was successful.
+# Compile of registerfile.vhd was successful.
+# 4 compiles, 0 failed with no errors.
+vsim work.register_file
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/lab_exam_train/mem.mpf' is used as the ini file.
+# vsim work.register_file 
+# Start time: 13:11:21 on Dec 01,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/lab_exam_train/mem.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.register_file(struct)#1
+# Loading work.reg8(struct)#1
+quit -sim
+# End time: 13:12:09 on Dec 01,2025, Elapsed time: 0:00:48
+# Errors: 0, Warnings: 8
+vsim work.reg8
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/lab_exam_train/mem.mpf' is used as the ini file.
+# vsim work.reg8 
+# Start time: 13:12:23 on Dec 01,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/lab_exam_train/mem.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.reg8(struct)#1
+add wave  \
+sim:/reg8/clk \
+sim:/reg8/reset \
+sim:/reg8/en \
+sim:/reg8/d \
+sim:/reg8/q
+force -freeze sim:/reg8/clk 1 0
+force -freeze sim:/reg8/reset 0 0
+force -freeze sim:/reg8/en 1 0
+force -freeze sim:/reg8/d 8'h14 0
+run
+run
+force -freeze sim:/reg8/clk 0 0
+run
+force -freeze sim:/reg8/clk 1 0
+run
+do {/media/omda/New Volume/college/arc/labs/arch_labs/lab3/simulate_reg.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Questa Altera Starter FPGA Edition-64 vmap 2025.2 Lib Mapping Utility 2025.05 May 31 2025
+# vmap work work 
+# ** Note: (vmap-220) '/media/omda/New Volume/college/arc/labs/lab_exam_train/mem.mpf' is used as the ini file.
+# Modifying /media/omda/New Volume/college/arc/labs/lab_exam_train/mem.mpf
+# Questa Altera Starter FPGA Edition-64 vcom 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 13:19:44 on Dec 01,2025
+# vcom -reportprogress 300 *.vhd 
+# ** Note: (vcom-220) '/media/omda/New Volume/college/arc/labs/lab_exam_train/mem.mpf' is used as the ini file.
+# ** Error: (vcom-7) Failed to open design unit file "*.vhd" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 13:19:44 on Dec 01,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: /home/omda/altera_lite/25.1std/questa_fse/linux_x86_64/vcom failed.
+# Error in macro /media/omda/New Volume/college/arc/labs/arch_labs/lab3/simulate_reg.do line 3
+# /home/omda/altera_lite/25.1std/questa_fse/linux_x86_64/vcom failed.
+#     while executing
+# "vcom *.vhd"
+quit -sim
+# End time: 13:26:58 on Dec 01,2025, Elapsed time: 0:14:35
+# Errors: 1, Warnings: 1
+# Compile of tb.vhdl was successful.
+vsim work.tb_register_file
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/lab_exam_train/mem.mpf' is used as the ini file.
+# vsim work.tb_register_file 
+# Start time: 13:27:43 on Dec 01,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/lab_exam_train/mem.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_register_file(tb)#1
+# Loading work.reg8(struct)#1
+add wave *
+run
+run
+run
+run -all
+# Break key hit
+# Simulation stop requested.
+quit -sim
+# End time: 13:47:36 on Dec 01,2025, Elapsed time: 0:19:53
+# Errors: 0, Warnings: 3
+# Compile of tb.vhdl was successful.
+vsim work.tb_register_file
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/lab_exam_train/mem.mpf' is used as the ini file.
+# vsim work.tb_register_file 
+# Start time: 13:48:14 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/lab_exam_train/mem.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_register_file(tb)#1
+# Loading work.reg8(struct)#1
+add wave *
+run -all
+quit -sim
+# End time: 13:49:40 on Dec 01,2025, Elapsed time: 0:01:26
+# Errors: 0, Warnings: 2
+# Compile of tb.vhdl was successful.
+vsim work.tb_register_file
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/lab_exam_train/mem.mpf' is used as the ini file.
+# vsim work.tb_register_file 
+# Start time: 13:50:06 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/lab_exam_train/mem.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_register_file(tb)#1
+# Loading work.reg8(struct)#1
+add wave *
+run -all
+# ** Failure: Simulation Finished
+#    Time: 1050 ns  Iteration: 0  Process: /tb_register_file/line__42 File: /media/omda/New Volume/college/arc/labs/lab_exam_train/tb.vhdl
+# Break in Process line__42 at /media/omda/New Volume/college/arc/labs/lab_exam_train/tb.vhdl line 118
+quit -sim
+# End time: 14:08:17 on Dec 01,2025, Elapsed time: 0:18:11
+# Errors: 1, Warnings: 2
+# reading /home/omda/altera_lite/25.1std/questa_fse/linux_x86_64/../modelsim.ini
+# Loading project traffic
+# Compile of tb.vhdl failed with 3 errors.
+# Compile of traffic.vhdl failed with 15 errors.
+# 2 compiles, 2 failed with 18 errors.
+# Compile of traffic.vhdl failed with 15 errors.
+# Compile of traffic.vhdl was successful.
+# Compile of tb.vhdl was successful.
+# Load canceled
+vsim work.tb_traffic
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic 
+# Start time: 14:23:41 on Dec 01,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_traffic(behavior)#1
+run
+add wave -position insertpoint  \
+sim:/tb_traffic/uut/state
+add wave -position insertpoint  \
+sim:/tb_traffic/clk
+run -all
+# ** Failure: Simulation Finished
+#    Time: 52 us  Iteration: 0  Process: /tb_traffic/line__27 File: /media/omda/New Volume/college/arc/labs/traffic/tb.vhdl
+# Break in Process line__27 at /media/omda/New Volume/college/arc/labs/traffic/tb.vhdl line 34
+add wave -position insertpoint  \
+sim:/tb_traffic/reset
+run -all
+run -all
+# Break key hit
+# Simulation stop requested.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+vsim work.tb_traffic
+# End time: 14:26:53 on Dec 01,2025, Elapsed time: 0:03:12
+# Errors: 0, Warnings: 1
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic 
+# Start time: 14:26:53 on Dec 01,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_traffic(behavior)#1
+add wave *
+add wave -position insertpoint  \
+sim:/tb_traffic/uut/state
+add wave -position insertpoint  \
+sim:/tb_traffic/uut/count
+run -all
+# ** Failure: Simulation Finished
+#    Time: 52 us  Iteration: 0  Process: /tb_traffic/line__27 File: /media/omda/New Volume/college/arc/labs/traffic/tb.vhdl
+# Break in Process line__27 at /media/omda/New Volume/college/arc/labs/traffic/tb.vhdl line 34
+# Compile of tb.vhdl was successful.
+vsim work.tb_traffic
+# End time: 14:30:35 on Dec 01,2025, Elapsed time: 0:03:42
+# Errors: 1, Warnings: 2
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic 
+# Start time: 14:30:35 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_traffic(behavior)#1
+add wave -position insertpoint  \
+sim:/tb_traffic/clk \
+sim:/tb_traffic/reset \
+sim:/tb_traffic/clk_enable
+add wave -position insertpoint  \
+sim:/tb_traffic/uut/state \
+sim:/tb_traffic/uut/count
+run -all
+# ** Failure: Simulation Finished
+#    Time: 107 us  Iteration: 0  Process: /tb_traffic/line__27 File: /media/omda/New Volume/college/arc/labs/traffic/tb.vhdl
+# Break in Process line__27 at /media/omda/New Volume/college/arc/labs/traffic/tb.vhdl line 38
+quit -sim
+# End time: 14:32:28 on Dec 01,2025, Elapsed time: 0:01:53
+# Errors: 1, Warnings: 1
+vsim work.tb_traffic
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic 
+# Start time: 15:30:19 on Dec 01,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_traffic(behavior)#1
+quit -sim
+# End time: 16:14:26 on Dec 01,2025, Elapsed time: 0:44:07
+# Errors: 0, Warnings: 1
+# Compile of traffic2.vhdl failed with 24 errors.
+# Compile of traffic2.vhdl failed with 24 errors.
+# Compile of traffic2.vhdl failed with 13 errors.
+# Compile of traffic2.vhdl failed with 15 errors.
+# Compile of traffic2.vhdl failed with 15 errors.
+# Compile of traffic2.vhdl failed with 15 errors.
+# Compile of traffic2.vhdl failed with 15 errors.
+# Compile of traffic2.vhdl failed with 7 errors.
+# Compile of traffic2.vhdl failed with 7 errors.
+# Compile of traffic2.vhdl was successful.
+# Compile of traffic2.vhdl failed with 1 errors.
+# Compile of traffic2.vhdl was successful.
+# Compile of traffic.vhdl was successful.
+# Compile of tb2.vhdl failed with 15 errors.
+# Compile of tb2.vhdl failed with 10 errors.
+# Compile of tb2.vhdl failed with 6 errors.
+# Compile of tb2.vhdl was successful.
+# Compile of tb.vhdl failed with 3 errors.
+# Compile of tb.vhdl failed with 6 errors.
+# Compile of tb.vhdl failed with 3 errors.
+# Compile of tb.vhdl was successful.
+vsim work.tb_traffic2
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic2 
+# Start time: 16:53:10 on Dec 01,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_traffic2(track)#1
+add wave -position insertpoint  \
+sim:/tb_traffic2/clk \
+sim:/tb_traffic2/clk_en \
+sim:/tb_traffic2/rst
+add wave -position insertpoint  \
+sim:/tb_traffic2/uut/light_sig \
+sim:/tb_traffic2/uut/cnt
+run -all
+# ** Failure: Simulation Finished
+#    Time: 49 us  Iteration: 0  Process: /tb_traffic2/line__35 File: /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl line 46
+quit -sim
+# End time: 16:56:05 on Dec 01,2025, Elapsed time: 0:02:55
+# Errors: 1, Warnings: 24
+vsim work.tb_traffic
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic 
+# Start time: 16:56:11 on Dec 01,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_traffic(behavior)#1
+add wave -position insertpoint  \
+sim:/tb_traffic/clk \
+sim:/tb_traffic/reset \
+sim:/tb_traffic/clk_enable
+add wave -position insertpoint  \
+sim:/tb_traffic/uut/state \
+sim:/tb_traffic/uut/count
+run -all
+# ** Failure: Simulation Finished
+#    Time: 107 us  Iteration: 0  Process: /tb_traffic/line__27 File: /media/omda/New Volume/college/arc/labs/traffic/tb.vhdl
+# Break in Process line__27 at /media/omda/New Volume/college/arc/labs/traffic/tb.vhdl line 38
+quit -sim
+# End time: 16:56:58 on Dec 01,2025, Elapsed time: 0:00:47
+# Errors: 1, Warnings: 1
+vsim work.tb_traffic2
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic2 
+# Start time: 16:57:04 on Dec 01,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_traffic2(track)#1
+add wave -position insertpoint  \
+sim:/tb_traffic2/clk \
+sim:/tb_traffic2/clk_en \
+sim:/tb_traffic2/rst
+add wave -position insertpoint  \
+sim:/tb_traffic2/uut/light_sig \
+sim:/tb_traffic2/uut/cnt
+run -all
+# ** Failure: Simulation Finished
+#    Time: 49 us  Iteration: 0  Process: /tb_traffic2/line__35 File: /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl line 46
+quit -sim
+# End time: 16:59:08 on Dec 01,2025, Elapsed time: 0:02:04
+# Errors: 1, Warnings: 1
+# Compile of tb.vhdl was successful.
+# Compile of traffic.vhdl was successful.
+# Compile of traffic2.vhdl was successful.
+# Compile of tb2.vhdl was successful.
+# 4 compiles, 0 failed with no errors.
+# Compile of traffic2.vhdl failed with 1 errors.
+# Compile of traffic2.vhdl was successful.
+vsim work.tb_traffic2
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic2 
+# Start time: 19:50:07 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_traffic2(track)#1
+add wave -position insertpoint  \
+sim:/tb_traffic2/clk \
+sim:/tb_traffic2/clk_en \
+sim:/tb_traffic2/rst
+add wave -position insertpoint  \
+sim:/tb_traffic2/uut/n \
+sim:/tb_traffic2/uut/light_sig \
+sim:/tb_traffic2/uut/cnt
+run -all
+# ** Failure: Simulation Finished
+#    Time: 49 us  Iteration: 0  Process: /tb_traffic2/line__35 File: /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl line 46
+quit -sim
+# End time: 19:54:02 on Dec 01,2025, Elapsed time: 0:03:55
+# Errors: 1, Warnings: 4
+# Compile of traffic2.vhdl was successful.
+vsim work.tb_traffic2
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic2 
+# Start time: 19:54:15 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_traffic2(track)#1
+add wave -position insertpoint  \
+sim:/tb_traffic2/clk \
+sim:/tb_traffic2/clk_en \
+sim:/tb_traffic2/rst
+add wave -position insertpoint  \
+sim:/tb_traffic2/uut/n \
+sim:/tb_traffic2/uut/light_sig \
+sim:/tb_traffic2/uut/cnt
+run -all
+# ** Failure: Simulation Finished
+#    Time: 49 us  Iteration: 0  Process: /tb_traffic2/line__35 File: /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl line 46
+quit -sim
+# End time: 19:57:45 on Dec 01,2025, Elapsed time: 0:03:30
+# Errors: 1, Warnings: 2
+# Load canceled
+# Compile of traffic2.vhdl was successful.
+vsim work.tb_traffic2
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic2 
+# Start time: 19:58:08 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_traffic2(track)#1
+add wave -position insertpoint  \
+sim:/tb_traffic2/clk \
+sim:/tb_traffic2/clk_en \
+sim:/tb_traffic2/rst
+add wave -position insertpoint  \
+sim:/tb_traffic2/uut/n \
+sim:/tb_traffic2/uut/light_sig \
+sim:/tb_traffic2/uut/cnt
+run -all
+# ** Failure: Simulation Finished
+#    Time: 49 us  Iteration: 0  Process: /tb_traffic2/line__35 File: /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl line 46
+quit -sim
+# End time: 20:00:52 on Dec 01,2025, Elapsed time: 0:02:44
+# Errors: 1, Warnings: 2
+# Compile of traffic2.vhdl was successful.
+vsim work.tb_traffic2
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic2 
+# Start time: 20:01:36 on Dec 01,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_traffic2(track)#1
+add wave -position insertpoint  \
+sim:/tb_traffic2/clk \
+sim:/tb_traffic2/clk_en \
+sim:/tb_traffic2/rst
+add wave -position insertpoint  \
+sim:/tb_traffic2/uut/n \
+sim:/tb_traffic2/uut/light_sig \
+sim:/tb_traffic2/uut/cnt
+run -all
+# ** Failure: Simulation Finished
+#    Time: 49 us  Iteration: 0  Process: /tb_traffic2/line__35 File: /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl line 46
+quit -sim
+# End time: 20:03:51 on Dec 01,2025, Elapsed time: 0:02:15
+# Errors: 1, Warnings: 2
+# Compile of traffic2.vhdl was successful.
+vsim work.tb_traffic2
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic2 
+# Start time: 20:04:04 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_traffic2(track)#1
+add wave -position insertpoint  \
+sim:/tb_traffic2/clk \
+sim:/tb_traffic2/clk_en \
+sim:/tb_traffic2/rst
+add wave -position insertpoint  \
+sim:/tb_traffic2/uut/n \
+sim:/tb_traffic2/uut/light_sig \
+sim:/tb_traffic2/uut/cnt
+run -all
+# ** Failure: Simulation Finished
+#    Time: 49 us  Iteration: 0  Process: /tb_traffic2/line__35 File: /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl line 46
+quit -sim
+# End time: 20:06:00 on Dec 01,2025, Elapsed time: 0:01:56
+# Errors: 1, Warnings: 2
+# Compile of traffic2.vhdl was successful.
+vsim work.tb_traffic2
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic2 
+# Start time: 20:06:12 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_traffic2(track)#1
+add wave -position insertpoint  \
+sim:/tb_traffic2/clk \
+sim:/tb_traffic2/clk_en \
+sim:/tb_traffic2/rst
+add wave -position insertpoint  \
+sim:/tb_traffic2/uut/n \
+sim:/tb_traffic2/uut/light_sig \
+sim:/tb_traffic2/uut/cnt
+run -all
+# ** Failure: Simulation Finished
+#    Time: 49 us  Iteration: 0  Process: /tb_traffic2/line__35 File: /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl line 46
+quit -sim
+# End time: 20:07:50 on Dec 01,2025, Elapsed time: 0:01:38
+# Errors: 1, Warnings: 2
+# Compile of traffic2.vhdl failed with 2 errors.
+# Compile of traffic2.vhdl was successful.
+vsim work.tb_traffic2
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic2 
+# Start time: 20:08:30 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_traffic2(track)#1
+add wave -position insertpoint  \
+sim:/tb_traffic2/clk \
+sim:/tb_traffic2/clk_en \
+sim:/tb_traffic2/rst
+add wave -position insertpoint  \
+sim:/tb_traffic2/uut/n \
+sim:/tb_traffic2/uut/light_sig \
+sim:/tb_traffic2/uut/cnt
+run -all
+# ** Failure: Simulation Finished
+#    Time: 49 us  Iteration: 0  Process: /tb_traffic2/line__35 File: /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl line 46
+quit -sim
+# End time: 20:11:39 on Dec 01,2025, Elapsed time: 0:03:09
+# Errors: 1, Warnings: 3
+# Compile of tb2.vhdl was successful with warnings.
+vsim work.tb_traffic2
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic2 
+# Start time: 20:11:53 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_traffic2(track)#1
+add wave -position insertpoint  \
+sim:/tb_traffic2/clk \
+sim:/tb_traffic2/clk_en \
+sim:/tb_traffic2/rst
+add wave -position insertpoint  \
+sim:/tb_traffic2/uut/n \
+sim:/tb_traffic2/uut/light_sig \
+sim:/tb_traffic2/uut/cnt
+run -all
+# ** Failure: Simulation Finished
+#    Time: 64 us  Iteration: 0  Process: /tb_traffic2/line__35 File: /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl line 46
+quit -sim
+# End time: 20:17:07 on Dec 01,2025, Elapsed time: 0:05:14
+# Errors: 1, Warnings: 2
+# Compile of tb2.vhdl failed with 1 errors.
+# Compile of tb2.vhdl failed with 1 errors.
+# Compile of tb2.vhdl failed with 4 errors.
+# Compile of tb2.vhdl was successful.
+# Optimization canceled
+vsim work.tb_traffic2
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic2 
+# Start time: 20:19:59 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_traffic2(track)#1
+quit -sim
+# End time: 20:21:19 on Dec 01,2025, Elapsed time: 0:01:20
+# Errors: 0, Warnings: 5
+# Compile of tb2.vhdl was successful.
+# Optimization canceled
+vsim work.tb_traffic2
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/traffic/traffic.mpf' is used as the ini file.
+# vsim work.tb_traffic2 
+# Start time: 20:21:49 on Dec 01,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_traffic2(track)#1
+add wave -position insertpoint  \
+sim:/tb_traffic2/clk \
+sim:/tb_traffic2/clk_en \
+sim:/tb_traffic2/rst
+add wave -position insertpoint  \
+sim:/tb_traffic2/uut/n \
+sim:/tb_traffic2/uut/light_sig \
+sim:/tb_traffic2/uut/cnt
+run -all
+# ** Failure: Simulation Finished
+#    Time: 64 us  Iteration: 0  Process: /tb_traffic2/line__36 File: /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl
+# Break in Process line__36 at /media/omda/New Volume/college/arc/labs/traffic/tb2.vhdl line 47
+quit -sim
+# End time: 21:31:29 on Dec 01,2025, Elapsed time: 1:09:40
+# Errors: 1, Warnings: 2
+# reading /home/omda/altera_lite/25.1std/questa_fse/linux_x86_64/../modelsim.ini
+# Loading project credit
+# Compile of machine.vhdl failed with 3 errors.
+# Compile of machine.vhdl failed with 8 errors.
+# Compile of machine.vhdl failed with 3 errors.
+# Compile of machine.vhdl failed with 2 errors.
+# Compile of machine.vhdl failed with 1 errors.
+# Compile of machine.vhdl was successful with warnings.
+# Compile of machine.vhdl was successful with warnings.
+# Compile of machine.vhdl was successful with warnings.
+# Compile of tb.vhdl failed with 13 errors.
+# Compile of tb.vhdl failed with 13 errors.
+# Compile of tb.vhdl failed with 1 errors.
+# Compile of tb.vhdl failed with 1 errors.
+# Compile of tb.vhdl failed with 1 errors.
+# Compile of tb.vhdl failed with 1 errors.
+# Compile of tb.vhdl failed with 1 errors.
+# Compile of tb.vhdl was successful.
+vsim work.machine_tb
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# vsim work.machine_tb 
+# Start time: 22:16:53 on Dec 01,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.machine_tb(arch_machine_tb)#1
+add wave -position insertpoint  \
+sim:/machine_tb/rst \
+sim:/machine_tb/clk \
+sim:/machine_tb/clk_en
+add wave -position insertpoint  \
+sim:/machine_tb/uut/machine_state \
+sim:/machine_tb/uut/counter
+add wave *
+run all
+# Invalid time value: all
+run -all
+# Break key hit
+# Break in Process line__22 at /media/omda/New Volume/college/arc/labs/credit_lab/machine.vhdl line 44
+quit -sim
+# End time: 22:20:37 on Dec 01,2025, Elapsed time: 0:03:44
+# Errors: 0, Warnings: 21
+# Compile of tb.vhdl was successful.
+# Compile of tb.vhdl was successful.
+vsim work.machine_tb
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# vsim work.machine_tb 
+# Start time: 22:21:15 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.machine_tb(arch_machine_tb)#1
+add wave -position insertpoint  \
+sim:/machine_tb/rst \
+sim:/machine_tb/clk \
+sim:/machine_tb/clk_en
+add wave -position insertpoint  \
+sim:/machine_tb/uut/machine_state
+add wave -position insertpoint  \
+sim:/machine_tb/uut/counter
+run -all
+# Break key hit
+# Break in Process line__22 at /media/omda/New Volume/college/arc/labs/credit_lab/machine.vhdl line 44
+quit -sim
+# End time: 22:26:03 on Dec 01,2025, Elapsed time: 0:04:48
+# Errors: 0, Warnings: 3
+# Compile of machine.vhdl was successful with warnings.
+# Compile of tb.vhdl was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.machine_tb
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# vsim work.machine_tb 
+# Start time: 22:26:17 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.machine_tb(arch_machine_tb)#1
+add wave -position insertpoint  \
+sim:/machine_tb/rst \
+sim:/machine_tb/clk \
+sim:/machine_tb/clk_en
+add wave -position insertpoint  \
+sim:/machine_tb/uut/machine_state \
+sim:/machine_tb/uut/counter
+run -all
+# Break key hit
+# Break in Process line__22 at /media/omda/New Volume/college/arc/labs/credit_lab/machine.vhdl line 44
+quit -sim
+# End time: 22:30:29 on Dec 01,2025, Elapsed time: 0:04:12
+# Errors: 0, Warnings: 2
+# Compile of machine.vhdl was successful.
+# Compile of tb.vhdl was successful.
+vsim work.machine_tb
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# vsim work.machine_tb 
+# Start time: 22:30:48 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.machine_tb(arch_machine_tb)#1
+add wave -position insertpoint  \
+sim:/machine_tb/rst \
+sim:/machine_tb/clk \
+sim:/machine_tb/clk_en
+add wave -position insertpoint  \
+sim:/machine_tb/uut/machine_state
+add wave -position insertpoint  \
+sim:/machine_tb/uut/counter
+run -all
+# ** Failure: finished simulation
+#    Time: 36 us  Iteration: 0  Process: /machine_tb/line__35 File: /media/omda/New Volume/college/arc/labs/credit_lab/tb.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/credit_lab/tb.vhdl line 46
+quit -sim
+# End time: 22:44:50 on Dec 01,2025, Elapsed time: 0:14:02
+# Errors: 1, Warnings: 3
+# Compile of machine.vhdl failed with 7 errors.
+# Compile of tb.vhdl was successful.
+# 2 compiles, 1 failed with 7 errors.
+# Compile of machine.vhdl was successful.
+vsim work.machine_tb
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# vsim work.machine_tb 
+# Start time: 22:47:27 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.machine_tb(arch_machine_tb)#1
+add wave -position insertpoint  \
+sim:/machine_tb/rst \
+sim:/machine_tb/clk \
+sim:/machine_tb/clk_en
+add wave -position insertpoint  \
+sim:/machine_tb/uut/machine_state \
+sim:/machine_tb/uut/counter \
+sim:/machine_tb/uut/slow_clk \
+sim:/machine_tb/uut/clk_cnt
+run -all
+# ** Failure: finished simulation
+#    Time: 720 us  Iteration: 0  Process: /machine_tb/line__35 File: /media/omda/New Volume/college/arc/labs/credit_lab/tb.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/credit_lab/tb.vhdl line 46
+quit -sim
+# End time: 22:49:34 on Dec 01,2025, Elapsed time: 0:02:07
+# Errors: 1, Warnings: 3
+# Compile of machine.vhdl was successful.
+vsim work.machine_tb
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# vsim work.machine_tb 
+# Start time: 22:49:48 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.machine_tb(arch_machine_tb)#1
+add wave -position insertpoint  \
+sim:/machine_tb/rst \
+sim:/machine_tb/clk \
+sim:/machine_tb/clk_en
+add wave -position insertpoint  \
+sim:/machine_tb/uut/machine_state \
+sim:/machine_tb/uut/counter \
+sim:/machine_tb/uut/slow_clk \
+sim:/machine_tb/uut/clk_cnt
+run -all
+# ** Failure: finished simulation
+#    Time: 720 us  Iteration: 0  Process: /machine_tb/line__35 File: /media/omda/New Volume/college/arc/labs/credit_lab/tb.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/credit_lab/tb.vhdl line 46
+quit -sim
+# End time: 22:55:44 on Dec 01,2025, Elapsed time: 0:05:56
+# Errors: 1, Warnings: 2
+# Compile of machine.vhdl was successful.
+vsim work.machine_tb
+# ** Note: (vsim-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# vsim work.machine_tb 
+# Start time: 22:56:08 on Dec 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-220) '/media/omda/New Volume/college/arc/labs/credit_lab/credit.mpf' is used as the ini file.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.machine_tb(arch_machine_tb)#1
+add wave -position insertpoint  \
+sim:/machine_tb/rst \
+sim:/machine_tb/clk \
+sim:/machine_tb/clk_en
+add wave -position insertpoint  \
+sim:/machine_tb/uut/machine_state \
+sim:/machine_tb/uut/counter \
+sim:/machine_tb/uut/slow_clk \
+sim:/machine_tb/uut/clk_cnt
+run -all
+# ** Failure: finished simulation
+#    Time: 720 us  Iteration: 0  Process: /machine_tb/line__35 File: /media/omda/New Volume/college/arc/labs/credit_lab/tb.vhdl
+# Break in Process line__35 at /media/omda/New Volume/college/arc/labs/credit_lab/tb.vhdl line 46
+quit -sim
+# End time: 22:59:01 on Dec 01,2025, Elapsed time: 0:02:53
+# Errors: 1, Warnings: 2
+# Compile of machine.vhdl was successful.

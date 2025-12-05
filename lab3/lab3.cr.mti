@@ -1,12 +1,4 @@
-D:/assignments/vhdl/arch_labs/lab3/register8bit.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab3/register8bit.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity reg8
--- Compiling architecture struct of reg8
-
-} {} {}} D:/assignments/vhdl/arch_labs/lab3/DFF.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab3/DFF.vhd
+D:/assignments/vhdl/arch_labs/lab3/DFF.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab3/DFF.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -14,14 +6,13 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity my_DFF
 -- Compiling architecture a_my_DFF of my_DFF
 
-} {} {}} D:/assignments/vhdl/arch_labs/lab3/register_memory.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab3/register_memory.vhd
+} {} {}} D:/assignments/vhdl/arch_labs/lab3/register8bit.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab3/register8bit.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity register_memory
--- Compiling architecture struct of register_memory
+-- Compiling entity reg8
+-- Compiling architecture struct of reg8
 
 } {} {}} D:/assignments/vhdl/arch_labs/lab3/registerfile.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab3/registerfile.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
@@ -31,5 +22,14 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Loading package NUMERIC_STD
 -- Compiling entity register_file
 -- Compiling architecture struct of register_file
+
+} {} {}} D:/assignments/vhdl/arch_labs/lab3/register_memory.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/assignments/vhdl/arch_labs/lab3/register_memory.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity register_memory
+-- Compiling architecture struct of register_memory
 
 } {} {}}
